@@ -2,7 +2,8 @@
 
 ## Group Members:
 
-names here.(CHANGE THIS!!!!!)
+* Andy Jiang
+* Sean Takahashi
 
 # IDEAS:
 
