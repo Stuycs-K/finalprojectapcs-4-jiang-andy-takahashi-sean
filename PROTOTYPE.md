@@ -28,10 +28,10 @@ UML Diagrams and descriptions of key algorithms, classes, and how things fit tog
 
 05/22: Write half of Tetrimino class and Board class
 05/23: Complete Tetrimino and Board class
-05/27: Work on animation
-05/28: Finish smooth animation
-05/29: 
-05/30:
+05/27: Write tPiece, jPiece, lPiece, oPiece, iPiece, zPiece, sPiece classes
+05/28: 
+05/29: Work on animation
+05/30: Finish smooth animation
 06/02:
 06/03: Add two-player mode
 06/04: Finish two-player mode
