@@ -6,3 +6,6 @@ This document must be updated daily every time you finish a work session.
 
 ### 2025-05-19
 Updated project description in readme, came up with class structure in prototype.
+
+### 2025-05-20
+Added class methods/fields to prototype
