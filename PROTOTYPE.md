@@ -20,9 +20,9 @@
 
 # Project Design
 
-UML Diagrams and descriptions of key algorithms, classes, and how things fit together.
+![UMLDiagram](UMLdiagram.png)
 
-
+The Board class will act as the "main" class, of which the Processing project will be made off of. It will deal with most of the functionality of the game, including score tracking, UI, tetrimino randomization, and clearing/bonuses. Each piece will inherit the Tetrimino class, and have small tweaks based on their shape and color. 
 
 # Intended pacing:
 
