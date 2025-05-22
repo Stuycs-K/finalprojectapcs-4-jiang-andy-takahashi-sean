@@ -36,20 +36,20 @@
 
 # Project Design
 
-UML Diagrams and descriptions of key algorithms, classes, and how things fit together.
+![UMLDiagram](UMLdiagram.png)
 
-
+The Board class will act as the "main" class, of which the Processing project will be made off of. It will deal with most of the functionality of the game, including score tracking, UI, tetrimino randomization, and clearing/bonuses. Each piece will inherit the Tetrimino class, and have small tweaks based on their shape and color. 
 
 # Intended pacing:
 
-05/22: Write half of Tetrimino class and Board class
-05/23: Complete Tetrimino and Board class
-05/27: Write tPiece, jPiece, lPiece, oPiece, iPiece, zPiece, sPiece classes
-05/28: 
-05/29: Work on animation
-05/30: Finish smooth animation
-06/02:
-06/03: Add two-player mode
-06/04: Finish two-player mode
-06/05: Add NES
-06/06: Finish NES
+- 05/22: Start writing Tetrimino class(Sean) and Board class(Andy)
+- 05/23: Continue working on classes
+- 05/27: Complete Tetrimino and Board class
+- 05/28: Write tPiece, jPiece, lPiece, oPiece, iPiece, zPiece, sPiece classes(half and half)
+- 05/29: Upgrade visual appearance(Sean) / work on animation(Andy)
+- 05/30: Continue work from previous day
+- 06/02: Testing/tweaking issues; buffer day for any setbacks
+- 06/03: Add two-player mode(Sean) / NES mode(Andy)
+- 06/04: Continue building alternate modes
+- 06/05: Implement new modes and fix bugs
+- 06/06: Final testing of UI, revisions
