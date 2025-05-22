@@ -1,0 +1,2 @@
+class sPiece extends Tetrimino{
+}
