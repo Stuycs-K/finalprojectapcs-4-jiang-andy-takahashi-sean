@@ -7,13 +7,14 @@
 - color pieceColor
 - int centerX
 - int centerY
-### Methods (abstract)
+### Methods
 - void left()
 - void right()
 - void counterclockwise()
 - void clockwise()
 - void softDrop()
 - void hardDrop()
+- (new) int collision()
 
 ## Board
 ### Fields
