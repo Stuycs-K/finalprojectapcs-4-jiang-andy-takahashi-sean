@@ -17,8 +17,9 @@
 
 ## Board
 ### Fields
-- int[10][20] board
-    - Each integer denotes the color of the block in that spot .
+- int[][] board
+- Each integer denotes the color of the block in that spot.
+    - 10 x 20 board
 - int score
 - Tetrimino hold
     - This is the piece that will be held .
@@ -32,13 +33,17 @@
     - Increments score appropriately
 - void gameOver()
     - Ends game if the board tops out
+- void generateBag()
+    - Adds 7 random things to bag
+- void pieceDropped()
+    - Clears rows if necessary and adds more things to bag if the bag is empty
 
 
 # Project Design
 
 ![UMLDiagram](UMLdiagram.png)
 
-The Board class will act as the "main" class, of which the Processing project will be made off of. It will deal with most of the functionality of the game, including score tracking, UI, tetrimino randomization, and clearing/bonuses. Each piece will inherit the Tetrimino class, and have small tweaks based on their shape and color. 
+The Board class will act as the "main" class, of which the Processing project will be made off of. It will deal with most of the functionality of the game, including score tracking, UI, tetrimino randomization, and clearing/bonuses. Each piece will inherit the Tetrimino class, and have small tweaks based on their shape and color.
 
 # Intended pacing:
 
