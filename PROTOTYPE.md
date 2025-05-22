@@ -18,8 +18,8 @@
 ## Board
 ### Fields
 - int[][] board
-- Each integer denotes the color of the block in that spot.
-    - 10 x 20 board
+  - Each integer denotes the color of the block in that spot. 0 denotes that the square is empty.
+  - 10 x 20 board
 - int score
 - Tetrimino hold
     - This is the piece that will be held .
