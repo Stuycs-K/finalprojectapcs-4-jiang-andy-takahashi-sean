@@ -15,14 +15,19 @@ public class Board {
     score = 0;
   }
   
-  private generateBag() {
+  private void generateBag() {
      
   }
   
   public void display() {
     fill(0);
     noStroke();
-    rect(200, 200, 400, 800);
+    rect(200, 150, 400, 800);
+    int x = 200;
+    for (int i = 0; i < 9; i++) {
+      x += 40;
+      fill()
+    }
   }
   
 }
