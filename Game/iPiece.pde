@@ -1,0 +1,2 @@
+class iPiece extends Tetrimino{
+}

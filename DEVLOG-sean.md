@@ -9,3 +9,7 @@ Updated README to include brief summary description of project and extended desc
 ## 2025-05-20: Created pacing
 
 Updated PROTOTYPE with pacing schedule. 
+
+## 2025-05-22: Started Tetrimino class
+
+Created abstract Tetrimino class and worked on class structure/methods
