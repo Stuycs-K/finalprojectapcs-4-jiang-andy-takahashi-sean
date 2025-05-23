@@ -42,14 +42,17 @@
     - bag will be implemented as a queue. The next 3 pieces in the queue will be shown.
     - Pieces will be added to the bag in groups of 7 (1 of each piece).
 ### Methods
-- void clearRow()
-    - Increments score appropriately
+- void clearRow(int r)
+    - Clears row at r and increments score appropriately
 - void gameOver()
     - Ends game if the board tops out
 - void generateBag()
     - Adds 7 random things to bag
 - void pieceDropped()
     - Clears rows if necessary and adds more things to bag if the bag is empty
+- void display()
+    - Calls displayBoard(), displayScore(), displayHold(), displayBag()
+
 
 
 # Project Design
