@@ -60,5 +60,9 @@ abstract class Tetrimino{
     }
   }
   
+  void collision() {
+    
+  }
+  
 
 }
