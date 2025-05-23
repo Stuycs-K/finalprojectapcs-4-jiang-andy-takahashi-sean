@@ -3,13 +3,17 @@ abstract class Tetrimino{
   color pieceColor;
   int centerX;
   int centerY;
-  PVector[] blocks;
+  PVector[][] blocks;
 
   Tetrimino(int x, int y){
     centerX = x;
     centerY = y;
-    blocks = new PVector[4];
+    blocks = new PVector[7][4];
     initializeBlocks();
+  }
+  
+  Tetrimino() {
+    
   }
   
   abstract void initializeBlocks();
@@ -47,6 +51,7 @@ abstract class Tetrimino{
   void hardDrop(){
     
   }
+
   
   
   void display(){
@@ -54,6 +59,10 @@ abstract class Tetrimino{
     for(PVector b : blocks){
       rect((centerX + b.x) * 20, (centerY + b.y) * 20, 20, 20); //placeholder 20, change accordingly
     }
+  }
+  
+  void collision() {
+    
   }
   
 

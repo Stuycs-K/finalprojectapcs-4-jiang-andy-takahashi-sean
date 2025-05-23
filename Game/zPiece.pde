@@ -1,2 +1,0 @@
-class zPiece extends Tetrimino{
-}

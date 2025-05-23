@@ -1,2 +1,0 @@
-class jPiece extends Tetrimino{
-}
