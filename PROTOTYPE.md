@@ -50,7 +50,7 @@
     - Adds 7 random things to bag
 - void pieceDropped()
     - Clears rows if necessary and adds more things to bag if the bag is empty
-- void display()
+- (new) void display()
     - Calls displayBoard(), displayScore(), displayHold(), displayBag()
 
 
