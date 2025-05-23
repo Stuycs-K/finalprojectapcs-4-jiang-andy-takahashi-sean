@@ -18,13 +18,13 @@ public class Board {
   
   private void generateBag() {
     bag = new LinkedList<Tetrimino>();
-    bag.add(new iPiece());
-    bag.add(new jPiece());
-    bag.add(new lPiece());
-    bag.add(new oPiece());
-    bag.add(new sPiece());
-    bag.add(new tPiece());
-    bag.add(new zPiece());
+    bag.add(new iPiece(3, 0));
+    bag.add(new jPiece(3, 0));
+    bag.add(new lPiece(3, 0));
+    bag.add(new oPiece(3, 0));
+    bag.add(new sPiece(3, 0));
+    bag.add(new tPiece(3, 0));
+    bag.add(new zPiece(3, 0));
     Collections.shuffle(bag);
   }
   
