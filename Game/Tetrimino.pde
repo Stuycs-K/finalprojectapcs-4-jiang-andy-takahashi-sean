@@ -12,6 +12,10 @@ abstract class Tetrimino{
     initializeBlocks();
   }
   
+  Tetrimino() {
+    
+  }
+  
   abstract void initializeBlocks();
 
   void left(){
