@@ -5,16 +5,26 @@
 - Abstract class
 ### Fields
 - color pieceColor
+  - Color for each piece.
 - int centerX
+  - x coordinate of center block.
 - int centerY
+  - y coordinate of center block.
 ### Methods
 - void left()
+  - Move tetrimino leftwards on screen.
 - void right()
+  - Move tetrimino towards rightside of screen.
 - void counterclockwise()
+  - Rotate tetrimino 90 degrees counterclockwise every call.
 - void clockwise()
+  - Rotate tetrimino 90 degrees clockwise every call.
 - void softDrop()
+  - Regular speed of tetrimino falling.
 - void hardDrop()
+  - Immediate drop once called.
 - (new) int collision()
+  - Determines location of tetrimino to be dropped based on other block configurations on the screen.
 
 ## Board
 ### Fields
@@ -23,7 +33,7 @@
   - 10 x 20 board
 - int score
 - Tetrimino hold
-    - This is the piece that will be held .
+    - This is the piece that will be held.
 - boolean canHold
     - Checks if you have already used hold.
 - LinkedList<Tetrimino> bag
