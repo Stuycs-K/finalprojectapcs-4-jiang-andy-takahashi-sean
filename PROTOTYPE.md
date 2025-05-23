@@ -25,6 +25,8 @@
   - Immediate drop once called.
 - (new) int collision()
   - Determines location of tetrimino to be dropped based on other block configurations on the screen.
+- (new) void initializeBlocks()
+  - To be implemented differently depending on tetrimino configuration of blocks. Will initialize PVectors for each of the four blocks in the tetrimino.
 
 ## Board
 ### Fields
