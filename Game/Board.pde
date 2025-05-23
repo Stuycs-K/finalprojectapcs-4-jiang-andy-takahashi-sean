@@ -13,9 +13,19 @@ public class Board {
     canHold = true;
     hold = null;
     score = 0;
+    generateBag();
   }
   
   private void generateBag() {
+    bag = new LinkedList<Tetrimino>();
+    bag.add(new iPiece());
+    bag.add(new jPiece());
+    bag.add(new lPiece());
+    bag.add(new oPiece());
+    bag.add(new sPiece());
+    bag.add(new tPiece());
+    bag.add(new zPiece());
+    Collections.shuffle(bag);
   }
   
   public void displayBoard() { 
@@ -37,6 +47,9 @@ public class Board {
     //  line(200, y, 600, y);
     //}
   }
+  
+  
+  
   
   public void displayBag() {
     fill(0);
