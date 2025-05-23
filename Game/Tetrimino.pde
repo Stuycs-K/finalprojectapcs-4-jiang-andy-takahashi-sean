@@ -1,4 +1,4 @@
-abstract class Tetrimino{
+public class Tetrimino{
   
   color pieceColor;
   int centerX;
@@ -9,14 +9,9 @@ abstract class Tetrimino{
     centerX = x;
     centerY = y;
     blocks = new PVector[7][4];
-    initializeBlocks();
   }
   
-  Tetrimino() {
-    
-  }
   
-  abstract void initializeBlocks();
 
   void left(){
     centerX -= 1;
