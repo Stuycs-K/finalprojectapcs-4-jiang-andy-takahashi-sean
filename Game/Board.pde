@@ -6,26 +6,34 @@ public class Board {
   int score;
   Tetrimino hold;
   boolean canHold;
-  LinkedList<Tetrimino> bag;
+  ArrayList<Tetrimino> bag;
   
   public Board() {
     board = new int[10][20];
     canHold = true;
     hold = null;
     score = 0;
+    bag = new ArrayList<Tetrimino>();
     generateBag();
   }
   
   private void generateBag() {
-    bag = new LinkedList<Tetrimino>();
-    bag.add(new iPiece());
-    bag.add(new jPiece());
-    bag.add(new lPiece());
-    bag.add(new oPiece());
-    bag.add(new sPiece());
-    bag.add(new tPiece());
-    bag.add(new zPiece());
-    Collections.shuffle(bag);
+    ArrayList<Tetrimino> group = new ArrayList<Tetrimino>();
+    group.add(new iPiece());
+    group.add(new jPiece());
+    group.add(new lPiece());
+    group.add(new oPiece());
+    group.add(new sPiece());
+    group.add(new tPiece());
+    group.add(new zPiece());
+    Collections.shuffle(group);
+    for (int i = 0; i < 7; i++) {
+      bag.add(group.get(i));
+    }
+  }
+  
+  public void clearRow() {
+    
   }
   
   public void displayBoard() { 
