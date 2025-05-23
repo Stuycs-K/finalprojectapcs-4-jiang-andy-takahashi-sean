@@ -10,6 +10,9 @@
   - x coordinate of center block.
 - int centerY
   - y coordinate of center block.
+- PVector[][] blocks
+  - Subarray containing different orientations of each tetrimino as PVectors, outer array represents different types
+
 ### Methods
 - void left()
   - Move tetrimino leftwards on screen.
@@ -25,8 +28,10 @@
   - Immediate drop once called.
 - (new) int collision()
   - Determines location of tetrimino to be dropped based on other block configurations on the screen.
+~
 - (new) void initializeBlocks()
   - To be implemented differently depending on tetrimino configuration of blocks. Will initialize PVectors for each of the four blocks in the tetrimino.
+~
 
 ## Board
 ### Fields
@@ -56,14 +61,15 @@
 
 ![UMLDiagram](UMLdiagram.png)
 
-The Board class will act as the "main" class, of which the Processing project will be made off of. It will deal with most of the functionality of the game, including score tracking, UI, tetrimino randomization, and clearing/bonuses. Each piece will inherit the Tetrimino class, and have small tweaks based on their shape and color.
+The ~Board~ (new) Game class will act as the "main" class, of which the Processing project will be made off of. It will deal with most of the functionality of the game, including score tracking, UI, tetrimino randomization, and clearing/bonuses. Each piece will inherit the Tetrimino class, and have small tweaks based on their shape and color.
 
 # Intended pacing:
 
 - 05/22: Start writing Tetrimino class(Sean) and Board class(Andy)
 - 05/23: Continue working on classes
 - 05/27: Complete Tetrimino and Board class
-- 05/28: Write tPiece, jPiece, lPiece, oPiece, iPiece, zPiece, sPiece classes(half and half)
+- 05/28: ~Write tPiece, jPiece, lPiece, oPiece, iPiece, zPiece, sPiece classes(half and half)~
+         (new) Changing to making 2D array of each variation and orientation of tetriminos
 - 05/29: Upgrade visual appearance(Sean) / work on animation(Andy)
 - 05/30: Continue work from previous day
 - 06/02: Testing/tweaking issues; buffer day for any setbacks
