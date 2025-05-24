@@ -4,31 +4,32 @@ public class Tetrimino{
   int centerX;
   int centerY;
   int type;
+  int orientation;
   PVector[] blocks;
 
   Tetrimino(int x, int y, int type){
     centerX = x;
     centerY = y;
     if (type == 0) { //I piece
-      blocks = new PVector[]{new PVector(-1,0), new PVector(0,0), new PVector(1,0), new PVector(2,0)};
+      blocks = new PVector[]{new PVector(0,0), new PVector(-1,0), new PVector(1,0), new PVector(2,0)}; //center second left
     }
     else if (type == 1) { //J piece
-    
+      blocks = new PVector[]{new PVector(0,0), new PVector(1,0), new PVector(0,1), new PVector(1,1)}; //center top left
     }
     else if (type == 2) { //L piece
-    
+      blocks = new PVector[]{new PVector(0,0), new PVector(1,0), new PVector(0,1), new PVector(1,1)};
     }
     else if (type == 3) { //O piece
-    
+      blocks = new PVector[]{new PVector(0,0), new PVector(1,0), new PVector(0,1), new PVector(1,1)}; //center top left
     }
     else if (type == 4) { //T piece
-    
+      blocks = new PVector[]{new PVector(0,0), new PVector(1,0), new PVector(0,1), new PVector(1,1)};
     }
     else if (type == 5) { // Z piece
-    
+      blocks = new PVector[]{new PVector(0,0), new PVector(1,0), new PVector(0,1), new PVector(1,1)};
     }
     else { // S piece
-    
+      blocks = new PVector[]{new PVector(0,0), new PVector(1,0), new PVector(0,1), new PVector(1,1)};
     }
   }
   

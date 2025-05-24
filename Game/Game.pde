@@ -1,3 +1,11 @@
+final int IPIECE = 0;
+final int JPIECE = 1;
+final int LPIECE = 2;
+final int OPIECE = 3;
+final int TPIECE = 4;
+final int ZPIECE = 5;
+final int SPIECE = 6;
+
 ArrayList<Tetrimino> bag;
 int score;
 Tetrimino hold;
