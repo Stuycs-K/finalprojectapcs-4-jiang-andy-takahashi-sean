@@ -1,6 +1,6 @@
 public class Tetrimino{
 
-  color pieceColor;
+  color pieceColor = 255; //placeholder
   int centerX;
   int centerY;
   int type;
@@ -32,15 +32,13 @@ public class Tetrimino{
       blocks = new PVector[]{new PVector(0,0), new PVector(1,0), new PVector(0,-1), new PVector(-1,-1)};
     }
   }
-  
-  
 
   void left(){
-    centerX -= 1;
+    centerX -= BLOCKSIZE;
   }
   
   void right(){
-    centerX += 1;
+    centerX += BLOCKSIZE;
   }
   
   void counterclockwise(){
@@ -61,7 +59,7 @@ public class Tetrimino{
   
   
   void softDrop(){
-    centerY += 1;
+    centerY += BLOCKSIZE;
   }
   
   
@@ -74,7 +72,7 @@ public class Tetrimino{
   void display(){
     fill(pieceColor);
     for(PVector b : blocks){
-      rect((centerX + b.x) * 20, (centerY + b.y) * 20, 20, 20); //placeholder 20, change accordingly
+      rect(centerX + b.x * BLOCKSIZE, centerY + b.y * BLOCKSIZE, BLOCKSIZE, BLOCKSIZE); //placeholder 20, change accordingly
     }
   }
   
@@ -82,5 +80,11 @@ public class Tetrimino{
     
   }
   
+  
+  void keyPressed() {
+  if (keyCode == DOWN) {
+      softDrop();
+  }
+  }
 
 }

@@ -51,6 +51,7 @@ void displayScore() {
   rect(80, 500, 100, 200); 
 }
 
+
 void setup() {
   size(800,900);
   background(255);
@@ -59,4 +60,6 @@ void setup() {
   displayBag();
   displayHold();
   displayScore();
+  Tetrimino test = new Tetrimino(400, 200, IPIECE);
+  test.display();
 }
