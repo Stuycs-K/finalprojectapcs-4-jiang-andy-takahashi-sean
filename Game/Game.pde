@@ -5,6 +5,7 @@ final int OPIECE = 3;
 final int TPIECE = 4;
 final int ZPIECE = 5;
 final int SPIECE = 6;
+final int BLOCKSIZE = 40;
 
 ArrayList<Tetrimino> bag;
 int score;

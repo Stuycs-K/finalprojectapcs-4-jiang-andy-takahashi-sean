@@ -1,5 +1,5 @@
 public class Tetrimino{
-  
+
   color pieceColor;
   int centerX;
   int centerY;
@@ -10,26 +10,26 @@ public class Tetrimino{
   Tetrimino(int x, int y, int type){
     centerX = x;
     centerY = y;
-    if (type == 0) { //I piece
+    if (type == IPIECE) {
       blocks = new PVector[]{new PVector(0,0), new PVector(-1,0), new PVector(1,0), new PVector(2,0)}; //center second left
     }
-    else if (type == 1) { //J piece
+    if (type == JPIECE) {
+      blocks = new PVector[]{new PVector(0,0), new PVector(-1,0), new PVector(0,-1), new PVector(0,-2)}; //center bottom right 
+    }
+    if (type == LPIECE) {
+      blocks = new PVector[]{new PVector(0,0), new PVector(1,0), new PVector(0,-1), new PVector(0,-2)}; //center bottom left 
+    }
+    if (type == OPIECE) {
       blocks = new PVector[]{new PVector(0,0), new PVector(1,0), new PVector(0,1), new PVector(1,1)}; //center top left
     }
-    else if (type == 2) { //L piece
-      blocks = new PVector[]{new PVector(0,0), new PVector(1,0), new PVector(0,1), new PVector(1,1)};
+    if (type == TPIECE) {
+      blocks = new PVector[]{new PVector(0,0), new PVector(1,0), new PVector(-1,0), new PVector(0,1)}; //center
     }
-    else if (type == 3) { //O piece
-      blocks = new PVector[]{new PVector(0,0), new PVector(1,0), new PVector(0,1), new PVector(1,1)}; //center top left
+    if (type == ZPIECE) {
+      blocks = new PVector[]{new PVector(0,0), new PVector(-1,0), new PVector(0,-1), new PVector(1,-1)}; //center bottom middle
     }
-    else if (type == 4) { //T piece
-      blocks = new PVector[]{new PVector(0,0), new PVector(1,0), new PVector(0,1), new PVector(1,1)};
-    }
-    else if (type == 5) { // Z piece
-      blocks = new PVector[]{new PVector(0,0), new PVector(1,0), new PVector(0,1), new PVector(1,1)};
-    }
-    else { // S piece
-      blocks = new PVector[]{new PVector(0,0), new PVector(1,0), new PVector(0,1), new PVector(1,1)};
+    if (type == SPIECE) {
+      blocks = new PVector[]{new PVector(0,0), new PVector(1,0), new PVector(0,-1), new PVector(-1,-1)};
     }
   }
   
