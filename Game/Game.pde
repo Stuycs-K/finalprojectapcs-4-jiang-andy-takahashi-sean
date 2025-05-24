@@ -3,7 +3,7 @@ int score;
 Tetrimino hold;
 boolean canHold;
 
-private void generateBag() {
+void generateBag() {
   ArrayList<Tetrimino> group = new ArrayList<Tetrimino>();
   
   // need new constructors

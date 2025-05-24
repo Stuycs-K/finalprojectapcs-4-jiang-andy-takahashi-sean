@@ -3,12 +3,33 @@ public class Tetrimino{
   color pieceColor;
   int centerX;
   int centerY;
-  PVector[][] blocks;
+  int type;
+  PVector[] blocks;
 
-  Tetrimino(int x, int y){
+  Tetrimino(int x, int y, int type){
     centerX = x;
     centerY = y;
-    blocks = new PVector[7][4];
+    if (type == 0) { //I piece
+      blocks = new PVector[]{new PVector(-1,0), new PVector(0,0), new PVector(1,0), new PVector(2,0)};
+    }
+    else if (type == 1) { //J piece
+    
+    }
+    else if (type == 2) { //L piece
+    
+    }
+    else if (type == 3) { //O piece
+    
+    }
+    else if (type == 4) { //T piece
+    
+    }
+    else if (type == 5) { // Z piece
+    
+    }
+    else { // S piece
+    
+    }
   }
   
   
