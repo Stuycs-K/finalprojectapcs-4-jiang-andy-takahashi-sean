@@ -111,14 +111,12 @@ public class Tetrimino{
   }
   
   boolean rotationCollision(int[][] board, int dir) {
-    PVector[] rot = Arrays.copyOf(blocks, 4);
+    PVector[] rot = Arrays.copyOf(blocks, 4); //make a copy, rotate that copy, and see if it's good
     if (dir == CLOCKWISE) {
-      for (PVector b : rot) {
-        
-      }
+      arrayCW(rot);
     }
     if (dir == COUNTERCLOCKWISE) {
-      
+      arrayCCW(rot);
     }
     
     for (PVector b : rot) {
