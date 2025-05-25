@@ -16,6 +16,9 @@ public class Tetrimino{
     }
     if (type == LPIECE) {
       blocks = new PVector[]{new PVector(0,0), new PVector(1,0), new PVector(0,-1), new PVector(0,-2)}; //center bottom left 
+      // 0 1
+      // 2 
+      // 3
     }
     if (type == OPIECE) {
       blocks = new PVector[]{new PVector(0,0), new PVector(1,0), new PVector(0,1), new PVector(1,1)}; //center top left

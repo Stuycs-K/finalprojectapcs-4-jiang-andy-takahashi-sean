@@ -35,6 +35,9 @@
   - Helper method to see if a block collides with the border or another lock
 - (new) void initializeBlocks()
   - To be implemented differently depending on tetrimino configuration of blocks. Will initialize PVectors for each of the four blocks in the tetrimino.
+- (new) int getRowNum(int y, PVector v) 
+  - Given the center position (y) and the displacement (v), returns the corresponding rowNum in board
+- (new) int getColNum(int x, PVector v)
 
 ## Board
 ### Fields
