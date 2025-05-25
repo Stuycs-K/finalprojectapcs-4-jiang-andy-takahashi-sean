@@ -3,8 +3,6 @@ public class Tetrimino{
   color pieceColor = 255; //placeholder
   int centerX;
   int centerY;
-  int type;
-  int orientation;
   PVector[] blocks;
 
   Tetrimino(int x, int y, int type){
@@ -74,12 +72,14 @@ public class Tetrimino{
     stroke(20);
     fill(pieceColor);
     for(PVector b : blocks){
-      rect(centerX + b.x * BLOCKSIZE, centerY + b.y * BLOCKSIZE, BLOCKSIZE, BLOCKSIZE); //placeholder 20, change accordingly
+      rect(centerX + b.x * BLOCKSIZE, centerY + b.y * BLOCKSIZE, BLOCKSIZE, BLOCKSIZE);
     }
   }
   
-  void collision() {
+  boolean collision() { //returns true if you are allowed to move, false if there's something in the way (border, bottom, or other blocks)
     
+    
+    return true;
   }
   
 }

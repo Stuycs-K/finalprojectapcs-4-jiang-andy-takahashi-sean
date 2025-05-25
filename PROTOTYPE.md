@@ -10,10 +10,14 @@
   - x coordinate of center block.
 - int centerY
   - y coordinate of center block.
-- PVector[][] blocks
-  - Subarray containing different orientations of each tetrimino as PVectors, outer array represents different types
+- ~~PVector[][] blocks~~
+  - ~~Subarray containing different orientations of each tetrimino as PVectors, outer array represents different types~~
+- (new) PVector[] blocks
+  - Size 4 array, each vector contains relative position to a center block.
 
 ### Methods
+- (new) Tetrimino(int x, int y, int type)
+  - 
 - void left()
   - Move tetrimino leftwards on screen.
 - void right()
@@ -26,8 +30,9 @@
   - Regular speed of tetrimino falling.
 - void hardDrop()
   - Immediate drop once called.
-- (new) int collision()
-  - Determines location of tetrimino to be dropped based on other block configurations on the screen.
+- (new) ~~int~~boolean collision()
+  - ~~Determines location of tetrimino to be dropped based on other block configurations on the screen~~.
+  - Helper method to see if a block collides with the border or another lock
 ~
 - (new) void initializeBlocks()
   - To be implemented differently depending on tetrimino configuration of blocks. Will initialize PVectors for each of the four blocks in the tetrimino.
@@ -36,29 +41,47 @@
 ## Board
 ### Fields
 - int[][] board
-  - Each integer denotes the color of the block in that spot. 0 denotes that the square is empty.
-  - 10 x 20 board
-- int score
-- Tetrimino hold
-    - This is the piece that will be held.
-- boolean canHold
-    - Checks if you have already used hold.
-- LinkedList<Tetrimino> bag
-    - bag will be implemented as a queue. The next 3 pieces in the queue will be shown.
-    - Pieces will be added to the bag in groups of 7 (1 of each piece).
+    - Each integer denotes the color of the block in that spot. 0 denotes that the square is empty.
+    - 10 x 20 board
+- ~~int score~~ MOVED TO GAME CLASS
+- ~~Tetrimino hold~~
+    - ~~This is the piece that will be held.~~
+- ~~boolean canHold~~
+    - ~~Checks if you have already used hold.~~
+- ~~LinkedList<Tetrimino> bag~~
+    - ~~bag will be implemented as a queue. The next 3 pieces in the queue will be shown.~~
+    - ~~Pieces will be added to the bag in groups of 7 (1 of each piece).~~
+    - MOVED TO GAME CLASS
 ### Methods
-- void clearRow(int r)
-    - Clears row at r and increments score appropriately
-- void gameOver()
-    - Ends game if the board tops out
+- ~~void clearRow(int r)~~
+    - ~~Clears row at r and increments score appropriately~~
+- ~~void gameOver()~~
+    - ~~Ends game if the board tops out~~
+- ~~void generateBag()~~
+    - ~~Adds 7 random things to bag~~
+- ~~void pieceDropped()~~
+    - ~~Clears rows if necessary and adds more things to bag if the bag is empty~~
+- (new) void displayBoard()
+    - ~~Calls displayBoard(), displayScore(), displayHold(), displayBag()~~
+    - (newer) just displays board
+
+## (New) Game 
+### Fields
+- ArrayList<Tetrimino> bag
+    - Will be implemented as a queue, and the first 5 elements will be visible. Pieces will be added to the bag in groups of 7 once the length of bag is less than 7.
+- (new) Tetrimino currentPiece
+- Tetrimino hold
+- boolean canHold
+- int score
+
+### Methods
+- void displayBag(), displayHold(), displayScore()
+- void keyPressed()
+    - Contains the responses to inputs
+- void draw()
 - void generateBag()
-    - Adds 7 random things to bag
-- void pieceDropped()
-    - Clears rows if necessary and adds more things to bag if the bag is empty
-- (new) void display()
-    - Calls displayBoard(), displayScore(), displayHold(), displayBag()
-
-
+- (new) boolean holdPiece()
+    - returns false if a piece was unsucessfully held
 
 # Project Design
 
