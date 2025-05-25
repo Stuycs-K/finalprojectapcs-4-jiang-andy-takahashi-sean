@@ -26,25 +26,28 @@
   - Rotates every vector in the array by 90 degrees clockwise
 - (new) void arrayCCW(PVector[])
   - Rotates every vector in the array by 90 degrees counterclockwise
-- void counterclockwise()
-  - Rotate tetrimino 90 degrees counterclockwise every call.
-- void clockwise()
-  - Rotate tetrimino 90 degrees clockwise every call.
+- ~~void counterclockwise()~~ - moved to rotatePiece
+  - ~~Rotate tetrimino 90 degrees counterclockwise every call.~~
+- ~~void clockwise()~~
+  - ~~Rotate tetrimino 90 degrees clockwise every call.~~
 - void ~~softDrop()~~ renamed to down()
   - ~~Regular speed of tetrimino falling.~~
   - Shifts down one tick
-- ~~void hardDrop()~~
+- ~~void hardDrop()~~ instead of hardDrop, just call down() repeatedly
   - ~~Immediate drop once called.~~
-- (new) ~~int~~boolean ~~collision()~~ collision(int dx, int dy, )
+- (new) ~~int~~~~boolean~~ ~~collision()~~ ~~collision(int dx, int dy, )~~ - decided to break collision checks into rotation collisions and left/right collisions
   - ~~Determines location of tetrimino to be dropped based on other block configurations on the screen~~.
   - ~~Helper method to see if a block collides with the border or another block~~
 - (new) boolean leftrightCollision(int[][] board, int dx, int dy) 
   - Determines if it is possible to move left, right, or down (no rotations)
-- (new) boolean rotationCollision(int[][] board, PVector[] rot)
+- ~~(new) void rotationCollision(int[][] board, PVector[] rot)~~ (newer) boolean rotatePiece(int[][] board, int dir)
   - Determines if it is possible to rotate
+  - (new) rotates the piece if it is possible to rotate (replaces counterclockwise() and clockwise())
+  - returns true if successful, false if there was something in the way
 
-- (new) void initializeBlocks()
-  - To be implemented differently depending on tetrimino configuration of blocks. Will initialize PVectors for each of the four blocks in the tetrimino.
+- ~~(new) void initializeBlocks()~~
+  - ~~To be implemented differently depending on tetrimino configuration of blocks. Will initialize PVectors for each of the four blocks in the tetrimino.~~
+  - Implemented in the constructor without need for a new method
 - (new) int getRowNum(PVector v) 
   - Given the center position (centerY) and the displacement (v), returns the corresponding rowNum in board
 - (new) int getColNum(PVector v)
@@ -54,7 +57,7 @@
 - int[][] board
     - Each integer denotes the color of the block in that spot. 0 denotes that the square is empty.
     - 10 x 20 board
-- ~~int score~~ MOVED TO GAME CLASS
+- ~~int score~~ EVERYTHING BELOW MOVED TO GAME CLASS
 - ~~Tetrimino hold~~
     - ~~This is the piece that will be held.~~
 - ~~boolean canHold~~
@@ -62,9 +65,8 @@
 - ~~LinkedList<Tetrimino> bag~~
     - ~~bag will be implemented as a queue. The next 3 pieces in the queue will be shown.~~
     - ~~Pieces will be added to the bag in groups of 7 (1 of each piece).~~
-    - MOVED TO GAME CLASS
 ### Methods
-- ~~void clearRow(int r)~~
+- ~~void clearRow(int r)~~ EVERYTHING BELOW MOVED TO GAME CLASS
     - ~~Clears row at r and increments score appropriately~~
 - ~~void gameOver()~~
     - ~~Ends game if the board tops out~~

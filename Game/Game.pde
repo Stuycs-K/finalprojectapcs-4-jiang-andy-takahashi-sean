@@ -61,10 +61,10 @@ void keyPressed() {
     while (!test.leftrightCollision(b.board, 0, 1)) test.down();
   }
   if (key == 'f' || key == 'F') {
-    test.rotationCollision(b.board, CLOCKWISE);
+    test.rotatePiece(b.board, CLOCKWISE);
   }
   if (key == 'a' || key == 'A') {
-    test.rotationCollision(b.board, COUNTERCLOCKWISE);
+    test.rotatePiece(b.board, COUNTERCLOCKWISE);
   }
 }
 

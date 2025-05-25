@@ -67,19 +67,35 @@ public class Tetrimino{
     }
   }
   
-  void counterclockwise(){
-    arrayCCW(blocks);
-  }
-  
-  void clockwise(){
-    arrayCW(blocks);
+  boolean rotatePiece(int[][] board, int dir) {
+    if (dir == CLOCKWISE) {
+      arrayCW(blocks);
+    }
+    if (dir == COUNTERCLOCKWISE) {
+      arrayCCW(blocks);
+    }
+    
+    for (PVector b : blocks) {
+      int r = getRowNum(b);
+      int c = getColNum(b);
+      if (r >= board.length || c >= board[0].length || c < 0) {
+        if (dir == CLOCKWISE) { //rotate back if there was a collision
+          arrayCCW(blocks);
+        }
+        if (dir == COUNTERCLOCKWISE) {
+          arrayCW(blocks);
+        }
+        return false;
+      }
+      
+    }
+    //if no collision, rotation is done
+    return true;
   }
   
   void down(){
     centerY += BLOCKSIZE;
   }
-
-  
   
   void display(){
     //strokeWeight(4);
@@ -107,32 +123,6 @@ public class Tetrimino{
       int c = getColNum(b) + dx;
       if (r >= board.length || c >= board[0].length || c < 0) return true; //left/right check
     }
-    return false;
-  }
-  
-  boolean rotationCollision(int[][] board, int dir) {
-    if (dir == CLOCKWISE) {
-      arrayCW(blocks);
-    }
-    if (dir == COUNTERCLOCKWISE) {
-      arrayCCW(blocks);
-    }
-    
-    for (PVector b : blocks) {
-      int r = getRowNum(b);
-      int c = getColNum(b);
-      if (r >= board.length || c >= board[0].length || c < 0) {
-        if (dir == CLOCKWISE) {
-          arrayCCW(blocks);
-        }
-        if (dir == COUNTERCLOCKWISE) {
-          arrayCW(blocks);
-        }
-        return true;
-      }
-      
-    }
-    
     return false;
   }
   
