@@ -26,16 +26,17 @@
   - Rotate tetrimino 90 degrees counterclockwise every call.
 - void clockwise()
   - Rotate tetrimino 90 degrees clockwise every call.
-- void softDrop()
-  - Regular speed of tetrimino falling.
-- void hardDrop()
-  - Immediate drop once called.
+- void ~~softDrop()~~ renamed to down()
+  - ~~Regular speed of tetrimino falling.~~
+  - Shifts down one tick
+- ~~void hardDrop()~~
+  - ~~Immediate drop once called.~~
 - (new) ~~int~~boolean ~~collision()~~ collision(int dx, int dy, )
   - ~~Determines location of tetrimino to be dropped based on other block configurations on the screen~~.
   - ~~Helper method to see if a block collides with the border or another block~~
-- (new) boolean leftrightCollision(int dx, int dy) 
+- (new) boolean leftrightCollision(int[][] board, int dx, int dy) 
   - Determines if it is possible to move left, right, or down (no rotations)
-- (new) boolean rotationCollision(PVector[] rot)
+- (new) boolean rotationCollision(int[][] board, PVector[] rot)
   - Determines if it is possible to rotate
 
 - (new) void initializeBlocks()
@@ -84,6 +85,7 @@
 - void displayBag(), displayHold(), displayScore()
 - void keyPressed()
     - Contains the responses to inputs
+    - (new) always checks for collisions first
 - void draw()
 - void generateBag()
 - (new) boolean holdPiece()

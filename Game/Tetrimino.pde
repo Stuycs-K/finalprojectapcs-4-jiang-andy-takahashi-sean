@@ -59,7 +59,7 @@ public class Tetrimino{
   }
   
   
-  void softDrop(){
+  void down(){
     centerY += BLOCKSIZE;
   }
   
@@ -95,6 +95,15 @@ public class Tetrimino{
       int r = getRowNum(b) + dy;
       int c = getColNum(b) + dx;
       if (r >= board.length || c >= board[0].length || c < 0) return true; //left/right check
+    }
+    return false;
+  }
+  
+  boolean rotationCollision(int[][] board, PVector[] rot) {
+    for (PVector b : rot) {
+      int r = getRowNum(b);
+      int c = getColNum(b);
+      if (r >= board.length || c >= board[0].length || c < 0) return true;
     }
     
     return false;

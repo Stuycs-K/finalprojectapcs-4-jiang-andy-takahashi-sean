@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 final int IPIECE = 0;
 final int JPIECE = 1;
 final int LPIECE = 2;
@@ -14,21 +16,11 @@ int score;
 Tetrimino hold;
 boolean canHold;
 
+Tetrimino test;
+Board b;
+
 void generateBag() {
-  ArrayList<Tetrimino> group = new ArrayList<Tetrimino>();
-  
-  // need new constructors
-  //group.add(new iPiece());
-  //group.add(new jPiece());
-  //group.add(new lPiece());
-  //group.add(new oPiece());
-  //group.add(new sPiece());
-  //group.add(new tPiece());
-  //group.add(new zPiece());
-  //Collections.shuffle(group);
-  //for (int i = 0; i < 7; i++) {
-  //  bag.add(group.get(i));
-  //}
+
 }
   
 
@@ -53,18 +45,18 @@ void displayScore() {
   rect(80, 500, 100, 200); 
 }
 
-Tetrimino test;
-Board board;
-
 void keyPressed() {
   if (keyCode == DOWN) {
-    if (!test.leftrightCollision(board.board, 0, 1)) test.softDrop();
+    if (!test.leftrightCollision(b.board, 0, 1)) test.down();
   }
   if (keyCode == LEFT) {
-    if (!test.leftrightCollision(board.board, -1, 0)) test.left();
+    if (!test.leftrightCollision(b.board, -1, 0)) test.left();
   }
   if (keyCode == RIGHT) {
-    if (!test.leftrightCollision(board.board, 1, 0)) test.right();
+    if (!test.leftrightCollision(b.board, 1, 0)) test.right();
+  }
+  if (key == ' ') {
+    while (!test.leftrightCollision(b.board, 0, 1)) test.down();
   }
   if (key == 'f' || key == 'F') {
     test.clockwise(); 
@@ -77,7 +69,7 @@ void keyPressed() {
 
 void draw() {
   background(255);
-  board.displayBoard();
+  b.displayBoard();
   displayBag();
   displayHold();
   displayScore();
@@ -89,6 +81,6 @@ void draw() {
 void setup() {
   size(800,900);
   background(255);
-  board = new Board();
+  b = new Board();
   test = new Tetrimino(400, 100, LPIECE);
 }
