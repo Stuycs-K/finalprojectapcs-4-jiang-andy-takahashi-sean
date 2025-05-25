@@ -77,7 +77,17 @@ public class Tetrimino{
     }
   }
   
-  boolean collision(int[][] board, int dx, int dy, PVector[] state) { //returns true if you are allowed to move, false if there's something in the way (border, bottom, or other blocks)
+  public int getRowNum(int y, PVector v) { //y: center block y   v: displacement vector
+    int newY = y + (int) (v.y * BLOCKSIZE);
+    return (newY - BOARD_START_Y) / BLOCKSIZE;
+  }
+  
+  public int getColNum(int x, PVector v) {
+    int newX = x + (int) (v.x * BLOCKSIZE);
+    return (newX - BOARD_START_X) / BLOCKSIZE;
+  }
+  
+  boolean collision(int[][] board, int dx, int dy, PVector[] state) { //returns false if you are allowed to move, true if there's something in the way (border, bottom, or other blocks)
     // dx / dy - how much movement is by (pass in for left/right movement)
     // state - 
     

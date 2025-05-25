@@ -16,7 +16,7 @@ public class Board {
   public void displayBoard() { 
     fill(0);
     noStroke();
-    rect(200, 100, 400, 800);
+    rect(BOARD_START_X, BOARD_START_Y, 400, 800);
   }
   
 }

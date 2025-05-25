@@ -6,6 +6,8 @@ final int TPIECE = 4;
 final int ZPIECE = 5;
 final int SPIECE = 6;
 final int BLOCKSIZE = 40;
+final int BOARD_START_Y = 100;
+final int BOARD_START_X = 200;
 
 ArrayList<Tetrimino> bag;
 int score;
@@ -80,6 +82,7 @@ void draw() {
   displayHold();
   displayScore();
   test.display();
+  text("Row: ", 100, 200);
 }
 
 
