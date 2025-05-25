@@ -68,16 +68,18 @@ public class Tetrimino{
   
   
   void display(){
-    strokeWeight(4);
-    stroke(20);
+    //strokeWeight(4);
+    //stroke(20);
+    noStroke();
     fill(pieceColor);
     for(PVector b : blocks){
       rect(centerX + b.x * BLOCKSIZE, centerY + b.y * BLOCKSIZE, BLOCKSIZE, BLOCKSIZE);
     }
   }
   
-  boolean collision() { //returns true if you are allowed to move, false if there's something in the way (border, bottom, or other blocks)
-    
+  boolean collision(int[][] board, int dx, int dy, PVector[] state) { //returns true if you are allowed to move, false if there's something in the way (border, bottom, or other blocks)
+    // dx / dy - how much movement is by (pass in for left/right movement)
+    // state - 
     
     return true;
   }

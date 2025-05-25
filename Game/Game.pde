@@ -74,6 +74,7 @@ void keyPressed() {
 
 
 void draw() {
+  background(255);
   board.displayBoard();
   displayBag();
   displayHold();
@@ -86,5 +87,5 @@ void setup() {
   size(800,900);
   background(255);
   board = new Board();
-  test = new Tetrimino(400, 200, TPIECE);
+  test = new Tetrimino(400, 100, LPIECE);
 }

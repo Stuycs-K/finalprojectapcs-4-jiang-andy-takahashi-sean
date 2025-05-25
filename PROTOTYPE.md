@@ -30,13 +30,11 @@
   - Regular speed of tetrimino falling.
 - void hardDrop()
   - Immediate drop once called.
-- (new) ~~int~~boolean collision()
+- (new) ~~int~~boolean ~~collision()~~ collision(int dx, int dy, )
   - ~~Determines location of tetrimino to be dropped based on other block configurations on the screen~~.
   - Helper method to see if a block collides with the border or another lock
-~
 - (new) void initializeBlocks()
   - To be implemented differently depending on tetrimino configuration of blocks. Will initialize PVectors for each of the four blocks in the tetrimino.
-~
 
 ## Board
 ### Fields
