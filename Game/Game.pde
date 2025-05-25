@@ -64,6 +64,12 @@ void keyPressed() {
   if (keyCode == RIGHT) {
     test.right();
   }
+  if (key == 'f' || key == 'F') {
+    test.clockwise(); 
+  }
+  if (key == 'a' || key == 'A') {
+    test.counterclockwise();
+  }
 }
 
 
@@ -80,5 +86,5 @@ void setup() {
   size(800,900);
   background(255);
   board = new Board();
-  test = new Tetrimino(400, 200, IPIECE);
+  test = new Tetrimino(400, 200, TPIECE);
 }
