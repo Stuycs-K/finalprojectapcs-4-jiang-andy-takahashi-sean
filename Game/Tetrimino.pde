@@ -1,6 +1,6 @@
 public class Tetrimino{
 
-  color pieceColor = 255; //placeholder
+  color pieceColor = color(200,200,50); //placeholder
   int centerX;
   int centerY;
   PVector[] blocks;
