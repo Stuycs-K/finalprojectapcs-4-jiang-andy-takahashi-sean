@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class Tetrimino{
 
   color pieceColor = color(200,200,50); //placeholder
@@ -49,28 +51,28 @@ public class Tetrimino{
     centerX += BLOCKSIZE;
   }
   
-  void ccwHelper(PVector b) {
-    float temp = b.x;
-    b.x = b.y;
-    b.y = -temp;
+  void arrayCCW(PVector[] arr) {
+    for (PVector b : arr) {     
+      float temp = b.x;
+      b.x = b.y;
+      b.y = -temp;
+    }
   }
   
-  void cwHelper(PVector b) {
-    float temp = b.x;
-    b.x = -b.y;
-    b.y = temp;
+  void arrayCW(PVector[] arr) {
+    for (PVector b : arr) {      
+      float temp = b.x;
+      b.x = -b.y;
+      b.y = temp;
+    }
   }
   
   void counterclockwise(){
-    for(PVector b : blocks){
-      ccwHelper(b);
-    }
+    arrayCCW(blocks);
   }
   
   void clockwise(){
-   for(PVector b : blocks){
-      cwHelper(b);
-    }
+    arrayCW(blocks);
   }
   
   void down(){
@@ -108,7 +110,17 @@ public class Tetrimino{
     return false;
   }
   
-  boolean rotationCollision(int[][] board, PVector[] rot) {
+  boolean rotationCollision(int[][] board, int dir) {
+    PVector[] rot = Arrays.copyOf(blocks, 4);
+    if (dir == CLOCKWISE) {
+      for (PVector b : rot) {
+        
+      }
+    }
+    if (dir == COUNTERCLOCKWISE) {
+      
+    }
+    
     for (PVector b : rot) {
       int r = getRowNum(b);
       int c = getColNum(b);

@@ -10,6 +10,8 @@ final int SPIECE = 6;
 final int BLOCKSIZE = 40;
 final int BOARD_START_Y = 100;
 final int BOARD_START_X = 200;
+final int CLOCKWISE = 0;
+final int COUNTERCLOCKWISE = 1;
 
 ArrayList<Tetrimino> bag;
 int score;
