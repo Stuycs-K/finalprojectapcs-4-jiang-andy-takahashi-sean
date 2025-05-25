@@ -80,13 +80,13 @@ public class Tetrimino{
     }
   }
   
-  public int getRowNum(int y, PVector v) { //y: center block y   v: displacement vector
-    int newY = y + (int) (v.y * BLOCKSIZE);
+  public int getRowNum(PVector v) { //v: displacement vector
+    int newY = centerY + (int) (v.y * BLOCKSIZE);
     return (newY - BOARD_START_Y) / BLOCKSIZE;
   }
   
-  public int getColNum(int x, PVector v) {
-    int newX = x + (int) (v.x * BLOCKSIZE);
+  public int getColNum(PVector v) {
+    int newX = centerX + (int) (v.x * BLOCKSIZE);
     return (newX - BOARD_START_X) / BLOCKSIZE;
   }
   

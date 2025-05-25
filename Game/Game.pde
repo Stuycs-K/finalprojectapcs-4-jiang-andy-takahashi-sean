@@ -82,7 +82,7 @@ void draw() {
   displayHold();
   displayScore();
   test.display();
-  text("Row: " + test.getRowNum(test.centerY, test.blocks[3]), 100, 200);
+  text("Col: " + test.getColNum(test.blocks[3]), 100, 200);
 }
 
 
