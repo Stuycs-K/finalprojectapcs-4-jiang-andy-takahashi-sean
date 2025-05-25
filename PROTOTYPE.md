@@ -42,7 +42,7 @@
   - Determines if it is possible to move left, right, or down (no rotations)
 - ~~(new) void rotationCollision(int[][] board, PVector[] rot)~~ (newer) boolean rotatePiece(int[][] board, int dir)
   - Determines if it is possible to rotate
-  - (new) rotates the piece if it is possible to rotate (replaces counterclockwise() and clockwise())
+  - (new) now rotates the piece if it is possible to rotate (replaces counterclockwise() and clockwise() since we have to rotate in this method anyways)
   - returns true if successful, false if there was something in the way
 
 - ~~(new) void initializeBlocks()~~
