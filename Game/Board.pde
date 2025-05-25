@@ -15,9 +15,9 @@ public class Board {
   
   public void displayBoard() { 
     fill(0);
-    strokeWeight(10);
+    strokeWeight(6);
     stroke(127);
-    rect(200, 100, 400, 800);
+    rect(195, 100, 410, 800);
   }
   
 

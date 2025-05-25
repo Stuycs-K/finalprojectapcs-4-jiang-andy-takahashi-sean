@@ -58,6 +58,12 @@ void keyPressed() {
   if (keyCode == DOWN) {
     test.softDrop();
   }
+  if (keyCode == LEFT) {
+    test.left();
+  }
+  if (keyCode == RIGHT) {
+    test.right();
+  }
 }
 
 

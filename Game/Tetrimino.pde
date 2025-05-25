@@ -70,6 +70,8 @@ public class Tetrimino{
   
   
   void display(){
+    strokeWeight(4);
+    stroke(20);
     fill(pieceColor);
     for(PVector b : blocks){
       rect(centerX + b.x * BLOCKSIZE, centerY + b.y * BLOCKSIZE, BLOCKSIZE, BLOCKSIZE); //placeholder 20, change accordingly
