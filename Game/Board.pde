@@ -2,7 +2,7 @@ public class Board {
   int[][] board;
   
   public Board() {
-    board = new int[10][20];
+    board = new int[20][10];
   }
 
   public void clearRow(int r) {
