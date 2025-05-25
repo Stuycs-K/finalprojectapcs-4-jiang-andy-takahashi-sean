@@ -32,7 +32,12 @@
   - Immediate drop once called.
 - (new) ~~int~~boolean ~~collision()~~ collision(int dx, int dy, )
   - ~~Determines location of tetrimino to be dropped based on other block configurations on the screen~~.
-  - Helper method to see if a block collides with the border or another lock
+  - ~~Helper method to see if a block collides with the border or another block~~
+- (new) boolean leftrightCollision(int dx, int dy) 
+  - Determines if it is possible to move left, right, or down (no rotations)
+- (new) boolean rotationCollision(PVector[] rot)
+  - Determines if it is possible to rotate
+
 - (new) void initializeBlocks()
   - To be implemented differently depending on tetrimino configuration of blocks. Will initialize PVectors for each of the four blocks in the tetrimino.
 - (new) int getRowNum(PVector v) 

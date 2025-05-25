@@ -90,11 +90,11 @@ public class Tetrimino{
     return (newX - BOARD_START_X) / BLOCKSIZE;
   }
   
-  boolean collision(int[][] board, int dx, int dy) { //returns false if you are allowed to move, true if there's something in the way (border, bottom, or other blocks)
+  boolean leftrightCollision(int[][] board, int dx, int dy) { //returns false if you are allowed to move, true if there's something in the way (border, bottom, or other blocks)
     for (PVector b : blocks) {
       int r = getRowNum(b) + dy;
       int c = getColNum(b) + dx;
-      if (r >= board.length || c >= board[0].length || c < 0) return true;
+      if (r >= board.length || c >= board[0].length || c < 0) return true; //left/right check
     }
     
     return false;

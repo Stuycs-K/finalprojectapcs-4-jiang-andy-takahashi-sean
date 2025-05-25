@@ -58,13 +58,13 @@ Board board;
 
 void keyPressed() {
   if (keyCode == DOWN) {
-    if (!test.collision(board.board, 0, 1)) test.softDrop();
+    if (!test.leftrightCollision(board.board, 0, 1)) test.softDrop();
   }
   if (keyCode == LEFT) {
-    if (!test.collision(board.board, -1, 0)) test.left();
+    if (!test.leftrightCollision(board.board, -1, 0)) test.left();
   }
   if (keyCode == RIGHT) {
-    if (!test.collision(board.board, 1, 0)) test.right();
+    if (!test.leftrightCollision(board.board, 1, 0)) test.right();
   }
   if (key == 'f' || key == 'F') {
     test.clockwise(); 
