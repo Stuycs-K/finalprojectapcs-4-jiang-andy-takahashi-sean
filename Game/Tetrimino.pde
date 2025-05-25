@@ -80,11 +80,4 @@ public class Tetrimino{
     
   }
   
-  
-  void keyPressed() {
-  if (keyCode == DOWN) {
-      softDrop();
-  }
-  }
-
 }

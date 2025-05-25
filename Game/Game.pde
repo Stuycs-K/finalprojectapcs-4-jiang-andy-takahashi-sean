@@ -51,15 +51,28 @@ void displayScore() {
   rect(80, 500, 100, 200); 
 }
 
+Tetrimino test;
+Board board;
 
-void setup() {
-  size(800,900);
-  background(255);
-  Board board = new Board();
+void keyPressed() {
+  if (keyCode == DOWN) {
+    test.softDrop();
+  }
+}
+
+
+void draw() {
   board.displayBoard();
   displayBag();
   displayHold();
   displayScore();
-  Tetrimino test = new Tetrimino(400, 200, IPIECE);
   test.display();
+}
+
+
+void setup() {
+  size(800,900);
+  background(255);
+  board = new Board();
+  test = new Tetrimino(400, 200, IPIECE);
 }
