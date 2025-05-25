@@ -12,3 +12,9 @@ Added class methods/fields to prototype
 
 ### 2025-05-22
 Started working on board methods, updated board methods in prototype.
+
+### 2025-05-24
+Got pieces to move and rotate, but collisions don't work
+
+### 2025-05-25
+Finished collision checking with the borders, need to get it working for other pieces (there has to be some locking method we add)

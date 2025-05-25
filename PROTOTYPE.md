@@ -22,6 +22,10 @@
   - Move tetrimino leftwards on screen.
 - void right()
   - Move tetrimino towards rightside of screen.
+- (new) void arrayCW(PVector[]) 
+  - Rotates every vector in the array by 90 degrees clockwise
+- (new) void arrayCCW(PVector[])
+  - Rotates every vector in the array by 90 degrees counterclockwise
 - void counterclockwise()
   - Rotate tetrimino 90 degrees counterclockwise every call.
 - void clockwise()
