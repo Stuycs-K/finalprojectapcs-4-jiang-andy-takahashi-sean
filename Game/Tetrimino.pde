@@ -42,19 +42,27 @@ public class Tetrimino{
     centerX += BLOCKSIZE;
   }
   
+  void ccwHelper(PVector b) {
+    float temp = b.x;
+    b.x = b.y;
+    b.y = -temp;
+  }
+  
+  void cwHelper(PVector b) {
+    float temp = b.x;
+    b.x = -b.y;
+    b.y = temp;
+  }
+  
   void counterclockwise(){
     for(PVector b : blocks){
-      float temp = b.x;
-      b.x = b.y;
-      b.y = -temp;
+      ccwHelper(b);
     }
   }
   
   void clockwise(){
    for(PVector b : blocks){
-      float temp = b.x;
-      b.x = -b.y;
-      b.y = temp;
+      cwHelper(b);
     }
   }
   

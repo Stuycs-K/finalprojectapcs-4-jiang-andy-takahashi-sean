@@ -59,6 +59,7 @@ void keyPressed() {
     while (!test.leftrightCollision(b.board, 0, 1)) test.down();
   }
   if (key == 'f' || key == 'F') {
+    
     test.clockwise(); 
   }
   if (key == 'a' || key == 'A') {
