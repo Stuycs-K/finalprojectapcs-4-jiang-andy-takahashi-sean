@@ -8,7 +8,7 @@ final int TPIECE = 4;
 final int ZPIECE = 5;
 final int SPIECE = 6;
 final int BLOCKSIZE = 40;
-final int BOARD_START_Y = 100;
+final int BOARD_START_Y = 50;
 final int BOARD_START_X = 200;
 final int CLOCKWISE = 0;
 final int COUNTERCLOCKWISE = 1;
@@ -30,21 +30,21 @@ void displayBag() {
   fill(0);
   strokeWeight(10);
   stroke(127);
-  rect(620,175, 100, 250);
+  rect(620,125, 100, 250);
 }
   
 void displayHold() {
   fill(0);
   strokeWeight(10);
   stroke(127);
-  rect(80,175, 100, 100);
+  rect(80,125, 100, 100);
 }
   
 void displayScore() {
   fill(0);
   strokeWeight(10);
   stroke(127);
-  rect(80, 500, 100, 200); 
+  rect(80, 450, 100, 200); 
 }
 
 void keyPressed() {
@@ -84,5 +84,5 @@ void setup() {
   size(800,900);
   background(255);
   b = new Board();
-  test = new Tetrimino(400, 100, LPIECE);
+  test = new Tetrimino(400, 130, LPIECE);
 }
