@@ -23,13 +23,13 @@ Board b;
 
 void generateBag() {
   ArrayList<Tetrimino> temp = new ArrayList<Tetrimino>();
-  temp.add(new Tetrimino(400, 130, IPIECE));
-  temp.add(new Tetrimino(400, 130, JPIECE));
-  temp.add(new Tetrimino(400, 130, LPIECE));
-  temp.add(new Tetrimino(400, 130, OPIECE));
-  temp.add(new Tetrimino(400, 130, TPIECE));
-  temp.add(new Tetrimino(400, 130, ZPIECE));
-  temp.add(new Tetrimino(400, 130, SPIECE));
+  temp.add(new Tetrimino(360, 130, IPIECE));
+  temp.add(new Tetrimino(360, 130, JPIECE));
+  temp.add(new Tetrimino(360, 130, LPIECE));
+  temp.add(new Tetrimino(360, 130, OPIECE));
+  temp.add(new Tetrimino(360, 130, TPIECE));
+  temp.add(new Tetrimino(360, 130, ZPIECE));
+  temp.add(new Tetrimino(360, 130, SPIECE));
   Collections.shuffle(temp);
   bag.addAll(temp);
 }
@@ -100,7 +100,7 @@ void draw() {
   displayHold();
   displayScore();
   current.display();
-  text("Col: " + current.getColNum(current.blocks[3]), 100, 200);
+  text("Col: " + current.getColNum(current.blocks[0]), 100, 200);
 }
 
 
@@ -108,7 +108,7 @@ void setup() {
   size(800,900);
   background(255);
   b = new Board();
-  current = new Tetrimino(400, 130, LPIECE);
   bag = new ArrayList<Tetrimino>();
   generateBag();
+  current = bag.get(0);
 }
