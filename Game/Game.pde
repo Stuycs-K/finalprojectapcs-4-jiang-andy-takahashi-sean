@@ -33,11 +33,11 @@ void generateBag() {
 }
   
 void lockPiece() {
-  for (PVector p : test.blocks) {
-    b.board[test.getRowNum(p)][test.getColNum(p)] = 1;
+  for (PVector p : current.blocks) {
+    b.board[current.getRowNum(p)][current.getColNum(p)] = 1;
   }
   bag.remove(0);
-  test = bag.get(0);
+  current = bag.get(0);
 }
 
 
