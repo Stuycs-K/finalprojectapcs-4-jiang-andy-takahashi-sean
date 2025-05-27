@@ -17,7 +17,7 @@
 
 ### Methods
 - (new) Tetrimino(int x, int y, int type)
-  - 
+  - Creates specific type of tetrimino with their respective PVector for the four blocks
 - void left()
   - Move tetrimino leftwards on screen.
 - void right()
@@ -82,10 +82,12 @@
 ### Fields
 - ArrayList<Tetrimino> bag
     - Will be implemented as a queue, and the first 5 elements will be visible. Pieces will be added to the bag in groups of 7 once the length of bag is less than 7.
-- (new) Tetrimino currentPiece
+- (new) Tetrimino current
+    - Tetrimino currently being dropped
 - Tetrimino hold
 - boolean canHold
 - int score
+    - Score calculated based on rows cleared and multipliers
 
 ### Methods
 - void displayBag(), displayHold(), displayScore()
@@ -94,6 +96,9 @@
     - (new) always checks for collisions first
 - void draw()
 - void generateBag()
+    - Creates an ArrayList of shuffled tetriminos and adds to current bag
+- (new) void updateBag()
+    - Checks to see if there are enough tetriminos in current bag, if not call generateBag() to maintain enough
 - (new) boolean holdPiece()
     - returns false if a piece was unsucessfully held
 
