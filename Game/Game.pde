@@ -40,6 +40,7 @@ void lockPiece() {
   }
   bag.remove(0);
   current = bag.get(0);
+  updateBag();
 }
 
 void updateBag(){
