@@ -17,3 +17,7 @@ Created abstract Tetrimino class and worked on class structure/methods
 ## 2025-05-23: Changing structure of tetriminos
 
 Altered from having subclasses of tetriminos to a 2D array of PVectors and all different types of tetriminos
+
+## 2025-05-27: Bag of tetriminos
+
+Got bag of shuffled tetriminos to work
