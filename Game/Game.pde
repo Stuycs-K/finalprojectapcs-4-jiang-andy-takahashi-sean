@@ -22,14 +22,16 @@ Tetrimino current;
 Board b;
 
 void generateBag() {
-  bag.add(new Tetrimino(400, 130, IPIECE));
-  bag.add(new Tetrimino(400, 130, JPIECE));
-  bag.add(new Tetrimino(400, 130, LPIECE));
-  bag.add(new Tetrimino(400, 130, OPIECE));
-  bag.add(new Tetrimino(400, 130, TPIECE));
-  bag.add(new Tetrimino(400, 130, ZPIECE));
-  bag.add(new Tetrimino(400, 130, SPIECE));
-  Collections.shuffle(bag);
+  ArrayList<Tetrimino> temp = new ArrayList<Tetrimino>();
+  temp.add(new Tetrimino(400, 130, IPIECE));
+  temp.add(new Tetrimino(400, 130, JPIECE));
+  temp.add(new Tetrimino(400, 130, LPIECE));
+  temp.add(new Tetrimino(400, 130, OPIECE));
+  temp.add(new Tetrimino(400, 130, TPIECE));
+  temp.add(new Tetrimino(400, 130, ZPIECE));
+  temp.add(new Tetrimino(400, 130, SPIECE));
+  Collections.shuffle(temp);
+  bag.addAll(temp);
 }
   
 void lockPiece() {
@@ -40,6 +42,11 @@ void lockPiece() {
   current = bag.get(0);
 }
 
+void updateBag(){
+  if(bag.size() <= 5){
+    generateBag();
+  }
+}
 
 void displayBag() {
   fill(0);
