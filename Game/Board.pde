@@ -19,6 +19,7 @@ public class Board {
     //rect(BOARD_START_X, BOARD_START_Y, 400, 800);
     for (int row = 0; row < 20; row++) {
       for (int col = 0; col < 10; col++) {
+        fill(board[row][col]);
         rect(BOARD_START_X + col * BLOCKSIZE, BOARD_START_Y + row * BLOCKSIZE, BLOCKSIZE, BLOCKSIZE);
       }
     }
