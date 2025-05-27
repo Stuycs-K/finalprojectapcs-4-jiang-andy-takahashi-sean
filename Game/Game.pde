@@ -1,4 +1,4 @@
-import java.util.Arrays;
+import java.util.*;
 
 final int IPIECE = 0;
 final int JPIECE = 1;
@@ -18,11 +18,18 @@ int score;
 Tetrimino hold;
 boolean canHold;
 
-Tetrimino test;
+Tetrimino current;
 Board b;
 
 void generateBag() {
-
+  bag.add(new Tetrimino(400, 130, IPIECE));
+  bag.add(new Tetrimino(400, 130, JPIECE));
+  bag.add(new Tetrimino(400, 130, LPIECE));
+  bag.add(new Tetrimino(400, 130, OPIECE));
+  bag.add(new Tetrimino(400, 130, TPIECE));
+  bag.add(new Tetrimino(400, 130, ZPIECE));
+  bag.add(new Tetrimino(400, 130, SPIECE));
+  Collections.shuffle(bag);
 }
   
 void lockPiece() {
@@ -57,22 +64,22 @@ void displayScore() {
 
 void keyPressed() {
   if (keyCode == DOWN) {
-    if (!test.leftrightCollision(b.board, 0, 1)) test.down();
+    if (!current.leftrightCollision(b.board, 0, 1)) current.down();
   }
   if (keyCode == LEFT) {
-    if (!test.leftrightCollision(b.board, -1, 0)) test.left();
+    if (!current.leftrightCollision(b.board, -1, 0)) current.left();
   }
   if (keyCode == RIGHT) {
-    if (!test.leftrightCollision(b.board, 1, 0)) test.right();
+    if (!current.leftrightCollision(b.board, 1, 0)) current.right();
   }
   if (key == ' ') {
-    while (!test.leftrightCollision(b.board, 0, 1)) test.down();
+    while (!current.leftrightCollision(b.board, 0, 1)) current.down();
   }
   if (key == 'f' || key == 'F') {
-    test.rotatePiece(b.board, CLOCKWISE);
+    current.rotatePiece(b.board, CLOCKWISE);
   }
   if (key == 'a' || key == 'A') {
-    test.rotatePiece(b.board, COUNTERCLOCKWISE);
+    current.rotatePiece(b.board, COUNTERCLOCKWISE);
   }
 }
 
@@ -83,8 +90,8 @@ void draw() {
   displayBag();
   displayHold();
   displayScore();
-  test.display();
-  text("Col: " + test.getColNum(test.blocks[3]), 100, 200);
+  current.display();
+  text("Col: " + current.getColNum(current.blocks[3]), 100, 200);
 }
 
 
@@ -92,5 +99,5 @@ void setup() {
   size(800,900);
   background(255);
   b = new Board();
-  test = new Tetrimino(400, 130, JPIECE);
+  current = new Tetrimino(400, 130, LPIECE);
 }
