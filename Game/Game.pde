@@ -25,6 +25,14 @@ void generateBag() {
 
 }
   
+void lockPiece() {
+  for (PVector p : test.blocks) {
+    b.board[test.getRowNum(p)][test.getColNum(p)] = 1;
+  }
+  bag.remove(0);
+  test = bag.get(0);
+}
+
 
 void displayBag() {
   fill(0);
