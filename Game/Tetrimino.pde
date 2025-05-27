@@ -14,15 +14,18 @@ public class Tetrimino{
       blocks = new PVector[]{new PVector(0,0), new PVector(-1,0), new PVector(1,0), new PVector(2,0)}; //center second left
       pieceColor = #00ffff;
     }
-    if (type == JPIECE) {
-      blocks = new PVector[]{new PVector(0,0), new PVector(-1,0), new PVector(0,-1), new PVector(0,-2)}; //center bottom right 
-      pieceColor = #0000ff;
-    }
     if (type == LPIECE) {
-      blocks = new PVector[]{new PVector(0,0), new PVector(1,0), new PVector(0,-1), new PVector(0,-2)}; //center bottom left 
+      blocks = new PVector[]{new PVector(0,0), new PVector(0,-1), new PVector(0,1), new PVector(1,1)}; //center bottom right 
+      pieceColor = #0000ff;
+      // 1
+      // 0
+      // 2 3
+    }
+    if (type == JPIECE) {
+      blocks = new PVector[]{new PVector(0,0), new PVector(0,-1), new PVector(1,-1), new PVector(0,1)}; //center bottom left 
       pieceColor = #ff7f00;
-      // 0 1
-      // 2 
+      // 1 2
+      // 0 
       // 3
     }
     if (type == OPIECE) {
