@@ -34,7 +34,7 @@ void generateBag() {
   
 void lockPiece() {
   for (PVector p : current.blocks) {
-    b.board[current.getRowNum(p)][current.getColNum(p)] = 1;
+    b.board[current.getRowNum(p)][current.getColNum(p)] = current.pieceColor;
   }
   bag.remove(0);
   current = bag.get(0);
@@ -74,6 +74,7 @@ void keyPressed() {
   }
   if (key == ' ') {
     while (!current.leftrightCollision(b.board, 0, 1)) current.down();
+    lockPiece();
   }
   if (key == 'f' || key == 'F') {
     current.rotatePiece(b.board, CLOCKWISE);
@@ -100,4 +101,6 @@ void setup() {
   background(255);
   b = new Board();
   current = new Tetrimino(400, 130, LPIECE);
+  bag = new ArrayList<Tetrimino>();
+  generateBag();
 }
