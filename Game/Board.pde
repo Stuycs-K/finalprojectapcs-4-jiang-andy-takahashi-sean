@@ -1,8 +1,8 @@
 public class Board {   
-  int[][] board;
+  color[][] board;
   
   public Board() {
-    board = new int[20][10];
+    board = new color[20][10]; 
   }
 
   public void clearRow(int r) {
@@ -16,7 +16,12 @@ public class Board {
   public void displayBoard() { 
     fill(0);
     noStroke();
-    rect(BOARD_START_X, BOARD_START_Y, 400, 800);
+    //rect(BOARD_START_X, BOARD_START_Y, 400, 800);
+    for (int row = 0; row < 20; row++) {
+      for (int col = 0; col < 10; col++) {
+        rect(BOARD_START_X + col * BLOCKSIZE, BOARD_START_Y + row * BLOCKSIZE, BLOCKSIZE, BLOCKSIZE);
+      }
+    }
   }
   
 }
