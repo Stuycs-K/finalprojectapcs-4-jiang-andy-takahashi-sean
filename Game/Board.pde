@@ -4,12 +4,25 @@ public class Board {
   public Board() {
     board = new color[20][10]; 
   }
-
+  
+  public void updateBoard() {
+    for (int row = 0; row < 20; row++) {
+      int count = 0;
+      for (int col = 0; col < 10; col ++) {
+        if (board[row][col] != 0) count++;
+      }
+      if (count == 10) clearRow(row);
+    }
+  }
+  
   public void clearRow(int r) {
     for (int row = r; row > 0; row--) {
       for (int col = 0; col < 10; col++) {
         board[row][col] = board[row-1][col];
       }
+    }
+    for (int col = 0; col < 10; col++) {
+      board[0][col] = 0;
     }
   }
   
