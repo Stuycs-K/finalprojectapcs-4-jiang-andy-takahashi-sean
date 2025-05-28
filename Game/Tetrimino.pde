@@ -101,9 +101,8 @@ public class Tetrimino{
   }
   
   void display(){
-    //strokeWeight(4);
-    //stroke(20);
-    noStroke();
+    strokeWeight(0.2);
+    stroke(255);
     fill(pieceColor);
     for(PVector b : blocks){
       rect(centerX + b.x * BLOCKSIZE, centerY + b.y * BLOCKSIZE, BLOCKSIZE, BLOCKSIZE);
