@@ -103,13 +103,13 @@ public class Tetrimino{
   }
   
   void display(){
+    displayGhost();    
     strokeWeight(0.2);
     stroke(255);
     fill(pieceColor);
     for(PVector b : blocks){
       rect(centerX + b.x * BLOCKSIZE, centerY + b.y * BLOCKSIZE, BLOCKSIZE, BLOCKSIZE);
     }
-    displayGhost();
   }
   
   void displayGhost() {
