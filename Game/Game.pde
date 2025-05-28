@@ -15,8 +15,9 @@ final int COUNTERCLOCKWISE = 1;
 
 ArrayList<Tetrimino> bag;
 int score;
-Tetrimino hold;
+
 boolean canHold;
+Tetrimino hold;
 
 Tetrimino current;
 Board b;
@@ -42,6 +43,7 @@ void lockPiece() {
   current = bag.get(0);
   updateBag();
   b.updateBoard();
+  canHold = true;
 }
 
 void updateBag(){
@@ -77,6 +79,22 @@ void displayHold() {
     hold.displayatpos(90, 135);
   }
 }
+ 
+void holdPiece() {
+  if (hold == null) {
+    hold = current;
+    bag.remove(0);
+    current = bag.get(0);
+  }
+  else {
+    if (canHold) {
+      Tetrimino temp = hold;
+      hold = current;
+      current = temp;
+      canHold = false;
+    }
+  }
+}
   
 void displayScore() {
   fill(0);
@@ -106,15 +124,7 @@ void keyPressed() {
     current.rotatePiece(b.board, COUNTERCLOCKWISE);
   }
   if (key == 'c' || key == 'C') {
-    if(hold != null){
-      Tetrimino temp = current;
-      current = hold;
-      hold = temp;
-    }
-    else{
-      hold = current;
-      current = bag.remove(0);
-    }
+    holdPiece();
   }
 }
 
@@ -126,7 +136,6 @@ void draw() {
   displayHold();
   displayScore();
   current.display();
-  text("Col: " + current.getColNum(current.blocks[0]), 100, 200);
 }
 
 
