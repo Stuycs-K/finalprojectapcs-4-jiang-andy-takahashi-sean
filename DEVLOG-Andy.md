@@ -18,3 +18,6 @@ Got pieces to move and rotate, but collisions don't work
 
 ### 2025-05-25
 Finished collision checking with the borders, need to get it working for other pieces (there has to be some locking method we add)
+
+### 2025-05-27
+Finished locking mechanism in class. Finished clearing rows at home and also added a grid and ghost blocks to make playing easier.

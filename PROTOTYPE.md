@@ -14,6 +14,8 @@
   - ~~Subarray containing different orientations of each tetrimino as PVectors, outer array represents different types~~
 - (new) PVector[] blocks
   - Size 4 array, each vector contains relative position to a center block.
+- (new) int piecetype
+  - Used in ghost block methods
 
 ### Methods
 - (new) Tetrimino(int x, int y, int type)
@@ -51,6 +53,8 @@
 - (new) int getRowNum(PVector v) 
   - Given the center position (centerY) and the displacement (v), returns the corresponding rowNum in board
 - (new) int getColNum(PVector v)
+- (new) displayGhost() 
+  - Displays where the block would go if it was hard dropped  
 
 ## Board
 ### Fields
