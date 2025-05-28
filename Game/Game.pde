@@ -54,10 +54,16 @@ void displayBag() {
   fill(0);
   strokeWeight(10);
   stroke(127);
-  rect(620,125, 150, 350);
+  rect(640,125, 200, 350);
   
   Tetrimino temp = bag.get(1);
-  temp.displayatpos(680, 150);
+  temp.displayatpos(720, 150);
+  
+  temp = bag.get(2);
+  temp.displayatpos(720, 275);
+  
+  temp = bag.get(3);
+  temp.displayatpos(720, 425);
   
 }
   
@@ -125,7 +131,7 @@ void draw() {
 
 
 void setup() {
-  size(800,900);
+  size(900,900);
   background(255);
   b = new Board();
   bag = new ArrayList<Tetrimino>();
