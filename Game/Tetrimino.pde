@@ -5,11 +5,13 @@ public class Tetrimino{
   color pieceColor = color(200,200,50); //placeholder
   int centerX;
   int centerY;
+  int piecetype;
   PVector[] blocks;
 
   Tetrimino(int x, int y, int type){
     centerX = x;
     centerY = y;
+    piecetype = type;
     if (type == IPIECE) {
       blocks = new PVector[]{new PVector(0,0), new PVector(-1,0), new PVector(1,0), new PVector(2,0)}; //center second left
       pieceColor = #00ffff;
@@ -106,6 +108,19 @@ public class Tetrimino{
     fill(pieceColor);
     for(PVector b : blocks){
       rect(centerX + b.x * BLOCKSIZE, centerY + b.y * BLOCKSIZE, BLOCKSIZE, BLOCKSIZE);
+    }
+    displayGhost();
+  }
+  
+  void displayGhost() {
+    Tetrimino ghost = new Tetrimino(centerX, centerY, piecetype);
+    ghost.blocks = this.blocks;
+    while (!ghost.leftrightCollision(b.board, 0, 1)) ghost.down();
+    strokeWeight(0.2);
+    stroke(255);
+    fill(100);
+    for(PVector b : ghost.blocks){
+      rect(ghost.centerX + b.x * BLOCKSIZE, ghost.centerY + b.y * BLOCKSIZE, BLOCKSIZE, BLOCKSIZE);
     }
   }
   
