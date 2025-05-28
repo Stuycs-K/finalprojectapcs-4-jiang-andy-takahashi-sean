@@ -15,8 +15,9 @@ final int COUNTERCLOCKWISE = 1;
 
 ArrayList<Tetrimino> bag;
 int score;
-Tetrimino hold;
+
 boolean canHold;
+Tetrimino hold;
 
 Tetrimino current;
 Board b;
@@ -42,6 +43,7 @@ void lockPiece() {
   current = bag.get(0);
   updateBag();
   b.updateBoard();
+  canHold = true;
 }
 
 void updateBag(){
@@ -54,10 +56,16 @@ void displayBag() {
   fill(0);
   strokeWeight(10);
   stroke(127);
-  rect(620,125, 150, 350);
+  rect(640,125, 200, 350);
   
   Tetrimino temp = bag.get(1);
-  temp.displayatpos(680, 150);
+  temp.displayatpos(720, 150);
+  
+  temp = bag.get(2);
+  temp.displayatpos(720, 275);
+  
+  temp = bag.get(3);
+  temp.displayatpos(720, 425);
   
 }
   
@@ -69,6 +77,22 @@ void displayHold() {
   
   if(hold != null){
     hold.displayatpos(90, 135);
+  }
+}
+ 
+void holdPiece() {
+  if (hold == null) {
+    hold = current;
+    bag.remove(0);
+    current = bag.get(0);
+  }
+  else {
+    if (canHold) {
+      Tetrimino temp = hold;
+      hold = current;
+      current = temp;
+      canHold = false;
+    }
   }
 }
   
@@ -100,15 +124,7 @@ void keyPressed() {
     current.rotatePiece(b.board, COUNTERCLOCKWISE);
   }
   if (key == 'c' || key == 'C') {
-    if(hold != null){
-      Tetrimino temp = current;
-      current = hold;
-      hold = temp;
-    }
-    else{
-      hold = current;
-      current = bag.remove(0);
-    }
+    holdPiece();
   }
 }
 
@@ -120,12 +136,11 @@ void draw() {
   displayHold();
   displayScore();
   current.display();
-  text("Col: " + current.getColNum(current.blocks[0]), 100, 200);
 }
 
 
 void setup() {
-  size(800,900);
+  size(900,900);
   background(255);
   b = new Board();
   bag = new ArrayList<Tetrimino>();

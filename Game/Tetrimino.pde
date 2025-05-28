@@ -17,25 +17,23 @@ public class Tetrimino{
       pieceColor = #00ffff;
     }
     if (type == LPIECE) {
-      blocks = new PVector[]{new PVector(0,0), new PVector(0,-1), new PVector(0,1), new PVector(1,1)}; //center bottom right 
+      blocks = new PVector[]{new PVector(0,0), new PVector(-1,0), new PVector(1,0), new PVector(1,-1)}; //center bottom right 
       pieceColor = #0000ff;
-      // 1
-      // 0
-      // 2 3
+      //     3
+      // 1 0 2
     }
     if (type == JPIECE) {
-      blocks = new PVector[]{new PVector(0,0), new PVector(0,-1), new PVector(1,-1), new PVector(0,1)}; //center bottom left 
+      blocks = new PVector[]{new PVector(0,0), new PVector(1,0), new PVector(-1,0), new PVector(-1,-1)}; //center bottom left 
       pieceColor = #ff7f00;
-      // 1 2
-      // 0 
-      // 3
+      // 3 
+      // 2 0 1
     }
     if (type == OPIECE) {
       blocks = new PVector[]{new PVector(0,0), new PVector(1,0), new PVector(0,1), new PVector(1,1)}; //center top left
       pieceColor = #ffff00;
     }
     if (type == TPIECE) {
-      blocks = new PVector[]{new PVector(0,0), new PVector(1,0), new PVector(-1,0), new PVector(0,1)}; //center
+      blocks = new PVector[]{new PVector(0,0), new PVector(1,0), new PVector(-1,0), new PVector(0,-1)}; //center
       pieceColor = #800080;
     }
     if (type == ZPIECE) {
@@ -127,7 +125,7 @@ public class Tetrimino{
     while (!ghost.leftrightCollision(b.board, 0, 1)) ghost.down();
     strokeWeight(0.2);
     stroke(255);
-    fill(100);
+    fill(40);
     for(PVector b : ghost.blocks){
       rect(ghost.centerX + b.x * BLOCKSIZE, ghost.centerY + b.y * BLOCKSIZE, BLOCKSIZE, BLOCKSIZE);
     }
