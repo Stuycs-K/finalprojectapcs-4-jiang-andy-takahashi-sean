@@ -41,7 +41,6 @@ void lockPiece() {
   bag.remove(0);
   current = bag.get(0);
   updateBag();
-  b.updateBoard();
 }
 
 void updateBag(){
@@ -54,11 +53,7 @@ void displayBag() {
   fill(0);
   strokeWeight(10);
   stroke(127);
-  rect(620,125, 150, 350);
-  
-  Tetrimino temp = bag.get(1);
-  temp.displayatpos(680, 150);
-  
+  rect(620,125, 100, 250);
 }
   
 void displayHold() {
@@ -66,10 +61,6 @@ void displayHold() {
   strokeWeight(10);
   stroke(127);
   rect(80,125, 100, 100);
-  
-  if(hold != null){
-    hold.displayatpos(90, 135);
-  }
 }
   
 void displayScore() {
@@ -98,17 +89,6 @@ void keyPressed() {
   }
   if (key == 'a' || key == 'A') {
     current.rotatePiece(b.board, COUNTERCLOCKWISE);
-  }
-  if (key == 'c' || key == 'C') {
-    if(hold != null){
-      Tetrimino temp = current;
-      current = hold;
-      hold = temp;
-    }
-    else{
-      hold = current;
-      current = bag.remove(0);
-    }
   }
 }
 
