@@ -118,7 +118,7 @@ public class Tetrimino{
     while (!ghost.leftrightCollision(b.board, 0, 1)) ghost.down();
     strokeWeight(0.2);
     stroke(255);
-    fill(100);
+    fill(40);
     for(PVector b : ghost.blocks){
       rect(ghost.centerX + b.x * BLOCKSIZE, ghost.centerY + b.y * BLOCKSIZE, BLOCKSIZE, BLOCKSIZE);
     }
