@@ -112,6 +112,15 @@ public class Tetrimino{
     }
   }
   
+  void displayatpos(int x, int y){
+    strokeWeight(0.2);
+    stroke(255);
+    fill(pieceColor);
+    for(PVector b : blocks){
+      rect(x + b.x * BLOCKSIZE, y + b.y * BLOCKSIZE, BLOCKSIZE, BLOCKSIZE);
+    }
+  }
+  
   void displayGhost() {
     Tetrimino ghost = new Tetrimino(centerX, centerY, piecetype);
     ghost.blocks = this.blocks;
