@@ -30,6 +30,8 @@ public class Board {
     fill(0);
     noStroke();
     //rect(BOARD_START_X, BOARD_START_Y, 400, 800);
+    strokeWeight(0.2);
+    stroke(255);
     for (int row = 0; row < 20; row++) {
       for (int col = 0; col < 10; col++) {
         fill(board[row][col]);
