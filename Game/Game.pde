@@ -12,9 +12,11 @@ final int BOARD_START_Y = 50;
 final int BOARD_START_X = 200;
 final int CLOCKWISE = 0;
 final int COUNTERCLOCKWISE = 1;
+int lines = 0;
+int score = 0;
+int level = 1;
 
 ArrayList<Tetrimino> bag;
-int score;
 
 boolean canHold;
 Tetrimino hold;
@@ -49,7 +51,7 @@ void lockPiece() {
   bag.remove(0);
   current = bag.get(0);
   updateBag();
-  b.updateBoard();
+  calculateScore(b.updateBoard());
   canHold = true;
 }
 
@@ -108,6 +110,29 @@ void displayScore() {
   strokeWeight(10);
   stroke(127);
   rect(80, 450, 100, 200); 
+}
+
+void calculateScore(int clear){
+  if(clear == 0) return;
+  
+  if(clear == 1){
+    score += 100 * level;
+  }
+  
+  if(clear == 2){
+    score += 300 * level;
+  }
+  
+  if(clear == 3){
+    score += 500 * level;
+  }
+  
+  if(clear == 4){
+    score += 800 * level;
+  }
+  
+  lines += clear;
+
 }
 
 void keyPressed() {
