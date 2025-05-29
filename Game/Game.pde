@@ -34,7 +34,14 @@ void generateBag() {
   Collections.shuffle(temp);
   bag.addAll(temp);
 }
-  
+
+void tick() {
+  if (frameCount % 20 == 0) {
+    if (!current.leftrightCollision(b.board, 0, 1)) current.down();
+    else lockPiece();
+  }
+}
+
 void lockPiece() {
   for (PVector p : current.blocks) {
     b.board[current.getRowNum(p)][current.getColNum(p)] = current.pieceColor;
@@ -106,6 +113,7 @@ void displayScore() {
 void keyPressed() {
   if (keyCode == DOWN) {
     if (!current.leftrightCollision(b.board, 0, 1)) current.down();
+    else lockPiece();
   }
   if (keyCode == LEFT) {
     if (!current.leftrightCollision(b.board, -1, 0)) current.left();
@@ -136,6 +144,7 @@ void draw() {
   displayHold();
   displayScore();
   current.display();
+  tick();
 }
 
 
