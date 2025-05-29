@@ -105,6 +105,8 @@
     - Checks to see if there are enough tetriminos in current bag, if not call generateBag() to maintain enough
 - (new) boolean holdPiece()
     - returns false if a piece was unsucessfully held
+- (new) tick()
+    - Moves the current piece down and locks if not possible
 
 # Project Design
 

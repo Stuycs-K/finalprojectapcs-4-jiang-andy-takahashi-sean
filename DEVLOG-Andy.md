@@ -21,3 +21,6 @@ Finished collision checking with the borders, need to get it working for other p
 
 ### 2025-05-27
 Finished locking mechanism in class. Finished clearing rows at home and also added a grid and ghost blocks to make playing easier.
+
+### 2025-05-28
+Finished hold pieces in class. Finished ticks at home. Need to add end behavior tomorrow, and ideally fix O-piece rotation and add rotation kicks (not in MVP). 
