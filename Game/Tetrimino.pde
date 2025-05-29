@@ -70,7 +70,7 @@ public class Tetrimino{
     }
   }
   
-  boolean rotatePiece(int[][] board, int dir) {
+  boolean rotateHelper(int[][] board, int dir) {
     if (dir == CLOCKWISE) {
       arrayCW(blocks);
     }
@@ -90,10 +90,22 @@ public class Tetrimino{
         }
         return false;
       }
-      
     }
     //if no collision, rotation is done
     return true;
+  }
+  
+  void rotatePiece(int[][] board, int dir) {
+    if (!rotateHelper(board, dir)) { //if normal rotation fails
+      right();
+      if (!rotateHelper(board, dir)) {//if moving it right 1 fails
+        left();
+        left();
+        if (!rotateHelper(board,dir)) {//if moving it left 1 fails, return to original position
+          right();
+        }
+      }
+    }
   }
   
   void down(){
