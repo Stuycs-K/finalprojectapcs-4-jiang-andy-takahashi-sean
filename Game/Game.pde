@@ -24,6 +24,9 @@ Tetrimino hold;
 Tetrimino current;
 Board b;
 
+int framesSinceInput = 0;
+int framesUntilLock = 200;
+
 void generateBag() {
   ArrayList<Tetrimino> temp = new ArrayList<Tetrimino>();
   temp.add(new Tetrimino(360, 130, IPIECE));
@@ -39,7 +42,13 @@ void generateBag() {
 
 void tick() {
   if (frameCount % 20 == 0) {
-    if (!current.leftrightCollision(b.board, 0, 1)) current.down();
+    if (!current.leftrightCollision(b.board, 0, 1)) { //if no collision down, move down
+      framesUntilLock = 200;
+      current.down();
+    }
+    else if (framesSinceInput <= 50 && framesUntilLock > 0) { //if there was a recent input and it hasn't been stuck for too long, delay for a while
+      framesUntilLock -= 20;
+    }
     else lockPiece();
   }
 }
@@ -136,6 +145,7 @@ void calculateScore(int clear){
 }
 
 void keyPressed() {
+  framesSinceInput = 0;
   if (keyCode == DOWN) {
     if (!current.leftrightCollision(b.board, 0, 1)) current.down();
     else lockPiece();
@@ -170,6 +180,7 @@ void draw() {
   displayScore();
   current.display();
   tick();
+  framesSinceInput++;
 }
 
 
