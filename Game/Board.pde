@@ -5,14 +5,19 @@ public class Board {
     board = new color[20][10]; 
   }
   
-  public void updateBoard() {
+  public int updateBoard() {
+    int linesCleared = 0;
     for (int row = 0; row < 20; row++) {
       int count = 0;
       for (int col = 0; col < 10; col ++) {
         if (board[row][col] != 0) count++;
       }
-      if (count == 10) clearRow(row);
+      if (count == 10){
+        clearRow(row);
+        linesCleared++;
+      }
     }
+    return linesCleared;
   }
   
   public void clearRow(int r) {
