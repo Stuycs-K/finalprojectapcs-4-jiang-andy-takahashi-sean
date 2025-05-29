@@ -21,3 +21,7 @@ Altered from having subclasses of tetriminos to a 2D array of PVectors and all d
 ## 2025-05-27: Bag of tetriminos
 
 Got bag of shuffled tetriminos to work
+
+## 2025-05-28: Upgrade UI
+
+Changed starting orientation of tetriminos to same as original game, added displays of tetriminos in bag and hold
