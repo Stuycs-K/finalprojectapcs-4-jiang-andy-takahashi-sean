@@ -44,7 +44,7 @@ void tick() {
       framesUntilLock = 200;
       current.down();
     }
-    else if (framesSinceInput <= 50 && framesUntilLock > 0) { //if there was a recent input and it hasn't been stuck for too long, delay for a while
+    else if (framesSinceInput <= 30 && framesUntilLock > 0) { //if there was a recent input and it hasn't been stuck for too long, delay for a while
       framesUntilLock -= 20;
     }
     else lockPiece();
