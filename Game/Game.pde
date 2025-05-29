@@ -17,6 +17,7 @@ int score = 0;
 int level = 1;
 
 ArrayList<Tetrimino> bag;
+List<Double> speed = Arrays.asList(0.016667, 0.021017, 0.026977, 0.035256, 0.04693, 0.06361, 0.0879, 0.1236, 0.1775, 0.2598, 0.388, 0.59, 0.92, 1.46, 2.36)
 
 boolean canHold;
 Tetrimino hold;

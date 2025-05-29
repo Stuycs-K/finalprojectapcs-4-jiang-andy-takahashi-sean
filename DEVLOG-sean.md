@@ -25,3 +25,8 @@ Got bag of shuffled tetriminos to work
 ## 2025-05-28: Upgrade UI
 
 Changed starting orientation of tetriminos to same as original game, added displays of tetriminos in bag and hold
+
+
+## 2025-05-29: Score hardcode + displaying game stats
+
+Added basic multiplier score calculation and added display of score, lines cleared, and current level
