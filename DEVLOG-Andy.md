@@ -23,4 +23,7 @@ Finished collision checking with the borders, need to get it working for other p
 Finished locking mechanism in class. Finished clearing rows at home and also added a grid and ghost blocks to make playing easier.
 
 ### 2025-05-28
-Finished hold pieces in class. Finished ticks at home. Need to add end behavior tomorrow, and ideally fix O-piece rotation and add rotation kicks (not in MVP). 
+Finished hold pieces in class. Finished ticks at home. Need to add end behavior tomorrow, and ideally fix O-piece rotation and add rotation kicks (not in MVP).
+
+### 2025-05-28
+Added basic rotation kicks (still need to work on S, Z, and T-spins) and improved movement when the piece reaches the end of the board.

@@ -24,7 +24,7 @@
   - Move tetrimino leftwards on screen.
 - void right()
   - Move tetrimino towards rightside of screen.
-- (new) void arrayCW(PVector[]) 
+- (new) void arrayCW(PVector[])
   - Rotates every vector in the array by 90 degrees clockwise
 - (new) void arrayCCW(PVector[])
   - Rotates every vector in the array by 90 degrees counterclockwise
@@ -40,20 +40,22 @@
 - (new) ~~int~~~~boolean~~ ~~collision()~~ ~~collision(int dx, int dy, )~~ - decided to break collision checks into rotation collisions and left/right collisions
   - ~~Determines location of tetrimino to be dropped based on other block configurations on the screen~~.
   - ~~Helper method to see if a block collides with the border or another block~~
-- (new) boolean leftrightCollision(int[][] board, int dx, int dy) 
+- (new) boolean leftrightCollision(int[][] board, int dx, int dy)
   - Determines if it is possible to move left, right, or down (no rotations)
-- ~~(new) void rotationCollision(int[][] board, PVector[] rot)~~ (newer) boolean rotatePiece(int[][] board, int dir)
+- ~~(new) void rotationCollision(int[][] board, PVector[] rot)~~ (newer) boolean -~~rotatePiece~~ rotateHelper(int[][] board, int dir)
   - Determines if it is possible to rotate
   - (new) now rotates the piece if it is possible to rotate (replaces counterclockwise() and clockwise() since we have to rotate in this method anyways)
   - returns true if successful, false if there was something in the way
-
+  - renamed to rotateHelper, and the new rotatePiece method accounts for wall kicks.
+- (new) rotatePiece
+  - Tries to rotate in place, if that fails, moves right and rotates, if that fails, moves left and rotates, and if that fails, does nothing.
 - ~~(new) void initializeBlocks()~~
   - ~~To be implemented differently depending on tetrimino configuration of blocks. Will initialize PVectors for each of the four blocks in the tetrimino.~~
   - Implemented in the constructor without need for a new method
-- (new) int getRowNum(PVector v) 
+- (new) int getRowNum(PVector v)
   - Given the center position (centerY) and the displacement (v), returns the corresponding rowNum in board
 - (new) int getColNum(PVector v)
-- (new) displayGhost() 
+- (new) displayGhost()
   - Displays where the block would go if it was hard dropped  
 
 ## Board
@@ -82,7 +84,7 @@
     - ~~Calls displayBoard(), displayScore(), displayHold(), displayBag()~~
     - (newer) just displays board
 
-## (New) Game 
+## (New) Game
 ### Fields
 - ArrayList<Tetrimino> bag
     - Will be implemented as a queue, and the first 5 elements will be visible. Pieces will be added to the bag in groups of 7 once the length of bag is less than 7.
@@ -92,6 +94,10 @@
 - boolean canHold
 - int score
     - Score calculated based on rows cleared and multipliers
+- int framesSinceInput
+  - Counts down from 30 every frame to track when to lock a piece
+- int framesUntilLock
+  - Ensures that the piece can't stay at the bottom for too long if inputs are being spammed
 
 ### Methods
 - void displayBag(), displayHold(), displayScore()
