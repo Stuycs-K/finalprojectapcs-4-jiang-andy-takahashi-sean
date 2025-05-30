@@ -32,6 +32,8 @@ public class Board {
   }
   
   public void displayBoard() { 
+    fill(150);
+    rect(BOARD_START_X - 10, BOARD_START_Y - 10, BLOCKSIZE * 10 + 20, BLOCKSIZE * 20 + 20);
     fill(0);
     noStroke();
     //rect(BOARD_START_X, BOARD_START_Y, 400, 800);
