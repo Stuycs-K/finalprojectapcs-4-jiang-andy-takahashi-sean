@@ -135,18 +135,16 @@ void displayScore() {
   strokeWeight(10);
   stroke(200);
   rect(30, 500, 200, 320); 
-  
-  fill(255);
-  textSize(20);
-  text("SCORE", 105, 535);
-  
+   
   fill(0);
   strokeWeight(0);
   rect(50, 545, 160, 50);
   
   fill(255);
   textSize(20);
-  text("LEVEL", 105, 645);
+  text("SCORE", 105, 535);
+  textSize(30);
+  text(score, 105, 575);
   
   fill(0);
   strokeWeight(0);
@@ -154,11 +152,19 @@ void displayScore() {
   
   fill(255);
   textSize(20);
-  text("LINES", 105, 750);
+  text("LEVEL", 105, 645);
+  textSize(30);
+  text(level, 105, 685);
   
   fill(0);
   strokeWeight(0);
   rect(50, 760, 160, 50); 
+  
+  fill(255);
+  textSize(20);
+  text("LINES", 105, 750);
+  textSize(30);
+  text(lines, 105, 790);
 }
 
 void calculateScore(int clear){
