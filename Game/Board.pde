@@ -15,6 +15,9 @@ public class Board {
       if (count == 10){
         clearRow(row);
         linesCleared++;
+        if(lines % 10 == 0){
+          level++;
+        }
       }
     }
     return linesCleared;

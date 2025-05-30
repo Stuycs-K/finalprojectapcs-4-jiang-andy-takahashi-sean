@@ -42,7 +42,7 @@ void generateBag() {
 }
 
 void tick() {
-  if (frameCount % 20 == 0) {
+  if (frameCount % int(1 / speed.get(level - 1)) == 0) {
     if (!current.leftrightCollision(b.board, 0, 1)) { //if no collision down, move down
       framesUntilLock = 200;
       current.down();
