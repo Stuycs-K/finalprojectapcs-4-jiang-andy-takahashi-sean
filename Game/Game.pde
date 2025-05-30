@@ -17,7 +17,7 @@ int score = 0;
 int level = 1;
 
 ArrayList<Tetrimino> bag;
-List<Double> speed = Arrays.asList(0.016667, 0.021017, 0.026977, 0.035256, 0.04693, 0.06361, 0.0879, 0.1236, 0.1775, 0.2598, 0.388, 0.59, 0.92, 1.46, 2.36)
+List<Float> speed = Arrays.asList(0.016667, 0.021017, 0.026977, 0.035256, 0.04693, 0.06361, 0.0879, 0.1236, 0.1775, 0.2598, 0.388, 0.59, 0.92, 1.46, 2.36);
 
 boolean canHold;
 Tetrimino hold;
@@ -92,10 +92,10 @@ void displayHold() {
   fill(0);
   strokeWeight(10);
   stroke(127);
-  rect(80,125, 100, 100);
+  rect(30,125, 150, 150);
   
   if(hold != null){
-    hold.displayatpos(90, 135);
+    hold.displayatpos(80, 180);
   }
 }
  
@@ -119,7 +119,19 @@ void displayScore() {
   fill(0);
   strokeWeight(10);
   stroke(127);
-  rect(80, 450, 100, 200); 
+  rect(30, 430, 150, 400); 
+  
+  fill(255);
+  strokeWeight(0);
+  rect(50, 500, 110, 40);
+  
+  fill(255);
+  strokeWeight(0);
+  rect(50, 635, 110, 40); 
+  
+  fill(255);
+  strokeWeight(0);
+  rect(50, 770, 110, 40); 
 }
 
 void calculateScore(int clear){
