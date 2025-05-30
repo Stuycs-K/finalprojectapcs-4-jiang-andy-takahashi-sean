@@ -30,3 +30,8 @@ Changed starting orientation of tetriminos to same as original game, added displ
 ## 2025-05-29: Score hardcode + displaying game stats
 
 Added basic multiplier score calculation and added display of score, lines cleared, and current level
+
+
+## 2025-05-30: Add different drop speeds
+
+Implemented levels based on lines cleared and different gravitational strength based on levels to vary drop speed
