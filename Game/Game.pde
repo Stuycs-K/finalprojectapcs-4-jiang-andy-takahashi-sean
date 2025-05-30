@@ -100,17 +100,17 @@ void displayHold() {
   fill(100);
   strokeWeight(10);
   stroke(200);
-  rect(30,100, 150, 175);
+  rect(30,100, 200, 195);
   fill(255);
   textSize(20);
-  text("HOLD", 80, 125);
+  text("HOLD", 105, 125);
   
   fill(0);
   strokeWeight(0);
-  rect(45, 150, 120, 100);
+  rect(40, 140, 180, 140);
   
   if(hold != null){
-    hold.displayatpos(80, 180);
+    hold.displayatpos(90, 195);
   }
 }
  
