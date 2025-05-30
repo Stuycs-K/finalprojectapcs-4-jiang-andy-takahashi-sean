@@ -61,7 +61,13 @@ void lockPiece() {
   bag.remove(0);
   current = bag.get(0);
   updateBag();
-  calculateScore(b.updateBoard());
+  int prevlines = lines;
+  int linescleared = b.updateBoard();
+  lines += linescleared;
+  calculateScore(linescleared);
+  if(linescleared != 0 && prevlines + linescleared > 10){
+    level++;
+  }
   canHold = true;
 }
 
