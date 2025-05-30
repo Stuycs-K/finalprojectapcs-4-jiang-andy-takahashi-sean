@@ -9,7 +9,7 @@ final int ZPIECE = 5;
 final int SPIECE = 6;
 final int BLOCKSIZE = 40;
 final int BOARD_START_Y = 50;
-final int BOARD_START_X = 200;
+final int BOARD_START_X = 250;
 final int CLOCKWISE = 0;
 final int COUNTERCLOCKWISE = 1;
 int lines = 0;
@@ -17,7 +17,7 @@ int score = 0;
 int level = 1;
 
 ArrayList<Tetrimino> bag;
-List<Double> speed = Arrays.asList(0.016667, 0.021017, 0.026977, 0.035256, 0.04693, 0.06361, 0.0879, 0.1236, 0.1775, 0.2598, 0.388, 0.59, 0.92, 1.46, 2.36)
+List<Float> speed = Arrays.asList(0.016667, 0.021017, 0.026977, 0.035256, 0.04693, 0.06361, 0.0879, 0.1236, 0.1775, 0.2598, 0.388, 0.59, 0.92, 1.46, 2.36);
 
 boolean canHold;
 Tetrimino hold;
@@ -30,13 +30,13 @@ int framesUntilLock = 200;
 
 void generateBag() {
   ArrayList<Tetrimino> temp = new ArrayList<Tetrimino>();
-  temp.add(new Tetrimino(360, 130, IPIECE));
-  temp.add(new Tetrimino(360, 130, JPIECE));
-  temp.add(new Tetrimino(360, 130, LPIECE));
-  temp.add(new Tetrimino(360, 130, OPIECE));
-  temp.add(new Tetrimino(360, 130, TPIECE));
-  temp.add(new Tetrimino(360, 130, ZPIECE));
-  temp.add(new Tetrimino(360, 130, SPIECE));
+  temp.add(new Tetrimino(410, 130, IPIECE));
+  temp.add(new Tetrimino(410, 130, JPIECE));
+  temp.add(new Tetrimino(410, 130, LPIECE));
+  temp.add(new Tetrimino(410, 130, OPIECE));
+  temp.add(new Tetrimino(410, 130, TPIECE));
+  temp.add(new Tetrimino(410, 130, ZPIECE));
+  temp.add(new Tetrimino(410, 130, SPIECE));
   Collections.shuffle(temp);
   bag.addAll(temp);
 }
@@ -72,30 +72,45 @@ void updateBag(){
 }
 
 void displayBag() {
-  fill(0);
+  fill(100);
   strokeWeight(10);
-  stroke(127);
-  rect(640,125, 200, 350);
+  stroke(200);
+  rect(670,100, 240, 500);
+  
+  fill(255);
+  textSize(20);
+  text("NEXT", 770, 130);
+  
+  fill(0);
+  strokeWeight(0);
+  rect(685, 140, 210, 440);
   
   Tetrimino temp = bag.get(1);
-  temp.displayatpos(720, 150);
+  temp.displayatpos(750, 210);
   
   temp = bag.get(2);
-  temp.displayatpos(720, 275);
+  temp.displayatpos(750, 345);
   
   temp = bag.get(3);
-  temp.displayatpos(720, 425);
+  temp.displayatpos(750, 480);
   
 }
   
 void displayHold() {
-  fill(0);
+  fill(100);
   strokeWeight(10);
-  stroke(127);
-  rect(80,125, 100, 100);
+  stroke(200);
+  rect(30,100, 150, 175);
+  fill(255);
+  textSize(20);
+  text("HOLD", 80, 125);
+  
+  fill(0);
+  strokeWeight(0);
+  rect(45, 150, 120, 100);
   
   if(hold != null){
-    hold.displayatpos(90, 135);
+    hold.displayatpos(80, 180);
   }
 }
  
@@ -116,10 +131,34 @@ void holdPiece() {
 }
   
 void displayScore() {
-  fill(0);
+  fill(100);
   strokeWeight(10);
-  stroke(127);
-  rect(80, 450, 100, 200); 
+  stroke(200);
+  rect(30, 500, 200, 320); 
+  
+  fill(255);
+  textSize(20);
+  text("SCORE", 105, 535);
+  
+  fill(0);
+  strokeWeight(0);
+  rect(50, 545, 160, 50);
+  
+  fill(255);
+  textSize(20);
+  text("LEVEL", 105, 645);
+  
+  fill(0);
+  strokeWeight(0);
+  rect(50, 655, 160, 50);
+  
+  fill(255);
+  textSize(20);
+  text("LINES", 105, 750);
+  
+  fill(0);
+  strokeWeight(0);
+  rect(50, 760, 160, 50); 
 }
 
 void calculateScore(int clear){
@@ -186,7 +225,7 @@ void draw() {
 
 
 void setup() {
-  size(900,900);
+  size(950,900);
   background(255);
   b = new Board();
   bag = new ArrayList<Tetrimino>();
