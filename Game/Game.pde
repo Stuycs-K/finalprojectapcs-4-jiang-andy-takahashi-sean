@@ -227,7 +227,11 @@ void keyPressed() {
 }
 
 void endGame() {
-  
+  fill(255);
+  textSize(40);
+  text("GAME OVER", 410, 435);
+  delay(10000);
+  exit();
 }
 
 void draw() {
