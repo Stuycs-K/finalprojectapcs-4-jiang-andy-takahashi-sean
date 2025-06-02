@@ -70,7 +70,6 @@ void lockPiece() {
   lines += linescleared;
   calculateScore(linescleared);
   if(linescleared != 0 && (prevlines % 10) + linescleared >= 10){
-    print("If statement run");
     level++;
   }
   canHold = true;
