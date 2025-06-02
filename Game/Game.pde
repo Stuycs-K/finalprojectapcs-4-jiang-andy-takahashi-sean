@@ -64,8 +64,10 @@ void lockPiece() {
   int prevlines = lines;
   int linescleared = b.updateBoard();
   lines += linescleared;
+  print(lines);
   calculateScore(linescleared);
-  if(linescleared != 0 && prevlines + linescleared > 10){
+  if(linescleared != 0 && (prevlines % 10) + linescleared > 10){
+    print("If statement run");
     level++;
   }
   canHold = true;
@@ -191,8 +193,6 @@ void calculateScore(int clear){
   if(clear == 4){
     score += 800 * level;
   }
-  
-  lines += clear;
 
 }
 
