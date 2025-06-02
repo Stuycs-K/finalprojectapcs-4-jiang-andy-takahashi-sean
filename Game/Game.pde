@@ -127,19 +127,17 @@ void displayHold() {
  
 void holdPiece() {
   if (hold == null) {
-    current.centerX = SPAWNX;
-    current.centerY = SPAWNY;
-    hold = current;
+    hold = new Tetrimino(410, 230, current.piecetype);
     bag.remove(0);
     current = bag.get(0);
   }
   else {
     if (canHold) {
+      Tetrimino temp = hold;
+      hold = new Tetrimino(410, 230, current.piecetype);
+      current = temp;
       current.centerX = SPAWNX;
       current.centerY = SPAWNY;
-      Tetrimino temp = hold;
-      hold = current;
-      current = temp;
       canHold = false;
     }
   }
