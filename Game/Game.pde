@@ -203,7 +203,6 @@ void keyPressed() {
   framesSinceInput = 0;
   if (keyCode == DOWN) {
     if (!current.leftrightCollision(b.board, 0, 1)) current.down();
-    else lockPiece();
   }
   if (keyCode == LEFT) {
     if (!current.leftrightCollision(b.board, -1, 0)) current.left();
