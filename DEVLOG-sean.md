@@ -35,3 +35,8 @@ Added basic multiplier score calculation and added display of score, lines clear
 ## 2025-05-30: Add different drop speeds
 
 Implemented levels based on lines cleared and different gravitational strength based on levels to vary drop speed
+
+
+## 2025-06-01: Fixed level/line incrementation
+
+Lines cleared was being incremented twice per tick so deleted one occurence, and fixed to level up when greater or equal to 10 instead of greater than 10.

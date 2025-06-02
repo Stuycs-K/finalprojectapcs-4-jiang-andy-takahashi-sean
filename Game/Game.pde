@@ -64,9 +64,8 @@ void lockPiece() {
   int prevlines = lines;
   int linescleared = b.updateBoard();
   lines += linescleared;
-  print(lines);
   calculateScore(linescleared);
-  if(linescleared != 0 && (prevlines % 10) + linescleared > 10){
+  if(linescleared != 0 && (prevlines % 10) + linescleared >= 10){
     print("If statement run");
     level++;
   }
