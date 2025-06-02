@@ -81,7 +81,7 @@ public class Tetrimino{
     for (PVector b : blocks) {
       int r = getRowNum(b);
       int c = getColNum(b);
-      if (r >= board.length || c >= board[0].length || c < 0 || board[r][c] != 0) {
+      if (r >= board.length || c >= board[0].length || c < 0 || (r >= 0 && board[r][c] != 0)) {
         if (dir == CLOCKWISE) { //rotate back if there was a collision
           arrayCCW(blocks);
         }
@@ -157,7 +157,7 @@ public class Tetrimino{
     for (PVector b : blocks) {
       int r = getRowNum(b) + dy;
       int c = getColNum(b) + dx;
-      if (r >= board.length || c >= board[0].length || c < 0 || board[r][c] != 0) return true; //left/right check
+      if (r >= board.length || c >= board[0].length || c < 0 || (r >= 0 && board[r][c] != 0)) return true; //left/right check
     }
     return false;
   }
