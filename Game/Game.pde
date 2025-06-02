@@ -8,13 +8,16 @@ final int TPIECE = 4;
 final int ZPIECE = 5;
 final int SPIECE = 6;
 final int BLOCKSIZE = 40;
-final int BOARD_START_Y = 50;
+final int BOARD_START_Y = 150;
 final int BOARD_START_X = 250;
 final int CLOCKWISE = 0;
 final int COUNTERCLOCKWISE = 1;
 int lines = 0;
 int score = 0;
 int level = 1;
+
+int SPAWNX = 410;
+int SPAWNY = 150;
 
 ArrayList<Tetrimino> bag;
 List<Float> speed = Arrays.asList(0.016667, 0.021017, 0.026977, 0.035256, 0.04693, 0.06361, 0.0879, 0.1236, 0.1775, 0.2598, 0.388, 0.59, 0.92, 1.46, 2.36);
@@ -30,13 +33,13 @@ int framesUntilLock = 200;
 
 void generateBag() {
   ArrayList<Tetrimino> temp = new ArrayList<Tetrimino>();
-  temp.add(new Tetrimino(410, 130, IPIECE));
-  temp.add(new Tetrimino(410, 130, JPIECE));
-  temp.add(new Tetrimino(410, 130, LPIECE));
-  temp.add(new Tetrimino(410, 130, OPIECE));
-  temp.add(new Tetrimino(410, 130, TPIECE));
-  temp.add(new Tetrimino(410, 130, ZPIECE));
-  temp.add(new Tetrimino(410, 130, SPIECE));
+  temp.add(new Tetrimino(SPAWNX, SPAWNY, IPIECE));
+  temp.add(new Tetrimino(SPAWNX, SPAWNY, JPIECE));
+  temp.add(new Tetrimino(SPAWNX, SPAWNY, LPIECE));
+  temp.add(new Tetrimino(SPAWNX, SPAWNY, OPIECE));
+  temp.add(new Tetrimino(SPAWNX, SPAWNY, TPIECE));
+  temp.add(new Tetrimino(SPAWNX, SPAWNY, ZPIECE));
+  temp.add(new Tetrimino(SPAWNX, SPAWNY, SPIECE));
   Collections.shuffle(temp);
   bag.addAll(temp);
 }
@@ -82,24 +85,24 @@ void displayBag() {
   fill(100);
   strokeWeight(10);
   stroke(200);
-  rect(670,100, 240, 500);
+  rect(670,200, 240, 500);
   
   fill(255);
   textSize(20);
-  text("NEXT", 770, 130);
+  text("NEXT", 770, 230);
   
   fill(0);
   strokeWeight(0);
-  rect(685, 140, 210, 440);
+  rect(685, 240, 210, 440);
   
   Tetrimino temp = bag.get(1);
-  temp.displayatpos(750, 210);
+  temp.displayatpos(750, 310);
   
   temp = bag.get(2);
-  temp.displayatpos(750, 345);
+  temp.displayatpos(750, 445);
   
   temp = bag.get(3);
-  temp.displayatpos(750, 480);
+  temp.displayatpos(750, 580);
   
 }
   
@@ -107,32 +110,32 @@ void displayHold() {
   fill(100);
   strokeWeight(10);
   stroke(200);
-  rect(30,100, 200, 195);
+  rect(30,200, 200, 195);
   fill(255);
   textSize(20);
-  text("HOLD", 105, 125);
+  text("HOLD", 105, 225);
   
   fill(0);
   strokeWeight(0);
-  rect(40, 140, 180, 140);
+  rect(40, 240, 180, 140);
   
   if(hold != null){
-    hold.displayatpos(90, 195);
+    hold.displayatpos(90, 295);
   }
 }
  
 void holdPiece() {
   if (hold == null) {
-    current.centerX = 410;
-    current.centerY = 130;
+    current.centerX = SPAWNX;
+    current.centerY = SPAWNY;
     hold = current;
     bag.remove(0);
     current = bag.get(0);
   }
   else {
     if (canHold) {
-      current.centerX = 410;
-      current.centerY = 130;
+      current.centerX = SPAWNX;
+      current.centerY = SPAWNY;
       Tetrimino temp = hold;
       hold = current;
       current = temp;
@@ -145,37 +148,37 @@ void displayScore() {
   fill(100);
   strokeWeight(10);
   stroke(200);
-  rect(30, 500, 200, 320); 
+  rect(30, 600, 200, 320); 
    
   fill(0);
   strokeWeight(0);
-  rect(50, 545, 160, 50);
+  rect(50, 645, 160, 50);
   
   fill(255);
   textSize(20);
-  text("SCORE", 105, 535);
+  text("SCORE", 105, 635);
   textSize(30);
-  text(score, 105, 575);
+  text(score, 105, 675);
   
   fill(0);
   strokeWeight(0);
-  rect(50, 655, 160, 50);
+  rect(50, 755, 160, 50);
   
   fill(255);
   textSize(20);
-  text("LEVEL", 105, 645);
+  text("LEVEL", 105, 745);
   textSize(30);
-  text(level, 105, 685);
+  text(level, 105, 785);
   
   fill(0);
   strokeWeight(0);
-  rect(50, 760, 160, 50); 
+  rect(50, 860, 160, 50); 
   
   fill(255);
   textSize(20);
-  text("LINES", 105, 750);
+  text("LINES", 105, 850);
   textSize(30);
-  text(lines, 105, 790);
+  text(lines, 105, 890);
 }
 
 void calculateScore(int clear){
@@ -239,7 +242,7 @@ void draw() {
 
 
 void setup() {
-  size(950,900);
+  size(950,1000);
   background(255);
   b = new Board();
   bag = new ArrayList<Tetrimino>();
