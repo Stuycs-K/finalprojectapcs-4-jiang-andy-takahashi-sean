@@ -94,11 +94,13 @@
 - boolean canHold
 - int score
     - Score calculated based on rows cleared and multipliers
-- int framesSinceInput
+- (new) int framesSinceInput
   - Counts down from 30 every frame to track when to lock a piece
-- int framesUntilLock
+- (new) int framesUntilLock
   - Ensures that the piece can't stay at the bottom for too long if inputs are being spammed
-
+- (new) int SPAWNX
+  - x coordinate of where the blocks start spawning
+- (new) int SPAWNY
 ### Methods
 - void displayBag(), displayHold(), displayScore()
 - void keyPressed()
