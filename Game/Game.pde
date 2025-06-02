@@ -59,7 +59,8 @@ void tick() {
 
 void lockPiece() {
   for (PVector p : current.blocks) {
-    b.board[current.getRowNum(p)][current.getColNum(p)] = current.pieceColor;
+    if (current.getRowNum(p) < 0) endGame();
+    else b.board[current.getRowNum(p)][current.getColNum(p)] = current.pieceColor;
   }
   bag.remove(0);
   current = bag.get(0);
@@ -228,6 +229,9 @@ void keyPressed() {
   }
 }
 
+void endGame() {
+  
+}
 
 void draw() {
   background(255);
