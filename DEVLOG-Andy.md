@@ -27,3 +27,6 @@ Finished hold pieces in class. Finished ticks at home. Need to add end behavior 
 
 ### 2025-05-28
 Added basic rotation kicks (still need to work on S, Z, and T-spins) and improved movement when the piece reaches the end of the board.
+
+### 2025-06-02
+Added the end of the game, and shifted spawn higher.
