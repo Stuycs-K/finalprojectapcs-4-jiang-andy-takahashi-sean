@@ -123,12 +123,16 @@ void displayHold() {
  
 void holdPiece() {
   if (hold == null) {
+    current.centerX = 410;
+    current.centerY = 130;
     hold = current;
     bag.remove(0);
     current = bag.get(0);
   }
   else {
     if (canHold) {
+      current.centerX = 410;
+      current.centerY = 130;
       Tetrimino temp = hold;
       hold = current;
       current = temp;
