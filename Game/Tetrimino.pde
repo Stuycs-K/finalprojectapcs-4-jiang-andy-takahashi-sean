@@ -29,7 +29,7 @@ public class Tetrimino{
       // 2 0 1
     }
     if (type == OPIECE) {
-      blocks = new PVector[]{new PVector(0,0), new PVector(1,0), new PVector(0,1), new PVector(1,1)}; //center top left
+      blocks = new PVector[]{new PVector(0.5,0.5), new PVector(0.5,-0.5), new PVector(-0.5,0.5), new PVector(-0.5,-0.5)}; //center top left
       pieceColor = #ffff00;
     }
     if (type == TPIECE) {
