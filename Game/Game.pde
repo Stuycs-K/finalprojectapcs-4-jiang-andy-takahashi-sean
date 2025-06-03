@@ -39,7 +39,7 @@ void generateBag() {
   temp.add(new Tetrimino(SPAWNX, SPAWNY, IPIECE));
   temp.add(new Tetrimino(SPAWNX, SPAWNY, JPIECE));
   temp.add(new Tetrimino(SPAWNX, SPAWNY, LPIECE));
-  temp.add(new Tetrimino(SPAWNX, SPAWNY, OPIECE));
+  temp.add(new Tetrimino(SPAWNX+BLOCKSIZE/2, SPAWNY+BLOCKSIZE/2, OPIECE));
   temp.add(new Tetrimino(SPAWNX, SPAWNY, TPIECE));
   temp.add(new Tetrimino(SPAWNX, SPAWNY, ZPIECE));
   temp.add(new Tetrimino(SPAWNX, SPAWNY, SPIECE));
