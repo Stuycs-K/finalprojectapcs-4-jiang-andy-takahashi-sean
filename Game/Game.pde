@@ -32,7 +32,7 @@ Tetrimino current;
 Board b;
 
 int framesSinceInput = 0;
-int framesUntilLock = 200;
+int framesUntilLock = 100;
 
 void generateBag() {
   ArrayList<Tetrimino> temp = new ArrayList<Tetrimino>();
@@ -50,11 +50,11 @@ void generateBag() {
 void tick() {
   if (frameCount % int(1 / speed.get(level - 1)) == 0) {
     if (!current.leftrightCollision(b.board, 0, 1)) { //if no collision down, move down
-      framesUntilLock = 200;
+      framesUntilLock = int(1 / speed.get(level - 1)) * 3;
       current.down();
     }
-    else if (framesSinceInput <= 30 && framesUntilLock > 0) { //if there was a recent input and it hasn't been stuck for too long, delay for a while
-      framesUntilLock -= 20;
+    else if (framesSinceInput <= 10 && framesUntilLock > 0) { //if there was a recent input and it hasn't been stuck for too long, delay for a while
+      framesUntilLock -= int(1 / speed.get(level - 1));
     }
     else lockPiece();
   }
