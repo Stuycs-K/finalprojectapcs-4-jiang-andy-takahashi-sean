@@ -17,6 +17,8 @@ int score = 0;
 int level = 1;
 
 int mode = 1;
+List<Integer> topscores = Arrays.asList(5000, 4000, 3000, 2000, 1000);
+
 
 int SPAWNX = 410;
 int SPAWNY = 150;
@@ -264,6 +266,17 @@ void draw() {
     fill(255);
     textSize(40);
     text("GAME OVER", 410, 435);
+    
+    //add current score if applicable
+    
+    //for(int i = 4; i >= 0; i--){
+      //if(score > topscores.get(i)){
+        //topscores.add(i + 1, score);
+        //topscores.remove(0);
+      //}
+    //}
+    
+    
     
     //implement game over screen
     
