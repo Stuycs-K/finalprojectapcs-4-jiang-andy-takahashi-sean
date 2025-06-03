@@ -15,7 +15,11 @@ final int COUNTERCLOCKWISE = 1;
 int lines = 0;
 int score = 0;
 int level = 1;
-boolean gameOver = false;
+
+int mode = 1;
+List<Integer> topscores = Arrays.asList(5000, 4000, 3000, 2000, 1000);
+
+
 int SPAWNX = 410;
 int SPAWNY = 150;
 
@@ -227,7 +231,7 @@ void keyPressed() {
 }
 
 void endGame() {
-  gameOver = true;
+  mode = 2;
 }
 
 void draw() {
@@ -237,7 +241,24 @@ void draw() {
   displayHold();
   displayScore();
   current.display();
-  if (!gameOver) {
+  if (mode == 0){
+    fill(0, 255, 0); //green
+    rect(300, 350, 200, 100); //play button
+    
+    fill(255);
+    textSize(30);
+    text("PLAY", 390, 400); //text for play button
+    
+    fill(150);
+    rect(320, 500, 160, 80); //level button
+    
+    fill(255);
+    textSize(25);
+    text("LEVEL: " + level, 390, 540); //dynamic level change text
+    
+  }
+
+  if (mode == 1) {
     tick();
     framesSinceInput++;
   }
@@ -245,9 +266,60 @@ void draw() {
     fill(255);
     textSize(40);
     text("GAME OVER", 410, 435);
+    
+    //add current score if applicable
+    
+    //for(int i = 4; i >= 0; i--){
+      //if(score > topscores.get(i)){
+        //topscores.add(i + 1, score);
+        //topscores.remove(0);
+      //}
+    //}
+    
+    
+    
+    //implement game over screen
+    
+    
+    //fill(50);
+    //strokeWeight(10);
+    //stroke(200);
+    //rect(200, 200, 550, 500);
+    
+    //fill(0);
+    //strokeWeight(2);
+    //stroke(255);
+    //rect(300, 400, 300, 300);
+    
+    //fill(255);
+    //textSize(35);
+    //text("GAME OVER", 400, 300);
+    
+    //textSize(30);
+    //text("HIGH SCORES", 420, 410);
+    
+    //for(int i = 0; i < 5; i++){
+      //textSize(25);
+      //text(topscores[i], 500, 420 + i * 20);
+    //}
+    
+    //add score to list of 5 highest
   }
 }
 
+void mouseClicked(){
+  if(mode == 0){
+    if((mouseX < 500 && mouseX > 300) && (mouseY < 450 && mouseY > 350)){
+      mode = 1;
+    }
+    if((mouseX < 480 && mouseX > 320) && (mouseY < 580 && mouseY > 500)){
+      if(level == 10){
+        level = -1;
+      }
+      level++;
+    }
+  }
+}
 
 void setup() {
   size(950,1000);

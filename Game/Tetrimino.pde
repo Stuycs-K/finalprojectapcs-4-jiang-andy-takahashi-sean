@@ -38,11 +38,11 @@ public class Tetrimino{
     }
     if (type == ZPIECE) {
       blocks = new PVector[]{new PVector(0,0), new PVector(-1,0), new PVector(0,-1), new PVector(1,-1)}; //center bottom middle
-      pieceColor = #ff0000;
+      pieceColor = #00ff00;
     }
     if (type == SPIECE) {
       blocks = new PVector[]{new PVector(0,0), new PVector(1,0), new PVector(0,-1), new PVector(-1,-1)};
-      pieceColor = #00ff00;
+      pieceColor = #ff0000;
     }
   }
 
