@@ -42,6 +42,11 @@ Implemented levels based on lines cleared and different gravitational strength b
 Lines cleared was being incremented twice per tick so deleted one occurence, and fixed to level up when greater or equal to 10 instead of greater than 10.
 
 
-## 2025-06-02: Fixed hold display
+## 2025-06-02: Fixed hold display, added modes
 
-Streamlined orientation when holding to fit in display
+Streamlined orientation when holding to fit in display; made start, game, end modes with proper displays
+
+
+## 2025-06-03: Clean up displays and add buttons
+
+Made keypressed only work during gameplay to prevent blocks dropping at game start display; added game over buttons and changed spacing; fixed order of top 5 scores and update algorithm

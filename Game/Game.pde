@@ -375,6 +375,21 @@ void mouseClicked(){
       level++;
     }
   }
+  
+  if(mode == 2){
+    if(mouseY < 650 && mouseY > 600){
+      if(mouseX < 390 && mouseX > 250){
+        mode = 0;
+      }
+      else if(mouseX < 540 && mouseX > 400){
+        mode = 1;
+      }
+      else{
+        exit();
+      }
+    }
+
+  }
 }
 
 void setup() {
