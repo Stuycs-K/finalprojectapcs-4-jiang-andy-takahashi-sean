@@ -72,7 +72,7 @@ void lockPiece() {
   int linescleared = b.updateBoard();
   lines += linescleared;
   calculateScore(linescleared);
-  if(linescleared != 0 && (prevlines % 10) + linescleared >= 10){
+  if(linescleared != 0 && (prevlines % 10) + linescleared >= 10 && level < 15){
     level++;
   }
   canHold = true;
