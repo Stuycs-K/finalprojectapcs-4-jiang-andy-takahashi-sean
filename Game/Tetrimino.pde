@@ -5,45 +5,57 @@ public class Tetrimino{
   color pieceColor = color(200,200,50); //placeholder
   int centerX;
   int centerY;
+  int offsetX;
+  int offsetY;
   int piecetype;
   PVector[] blocks;
 
   Tetrimino(int x, int y, int type){
-    centerX = x;
-    centerY = y;
     piecetype = type;
     if (type == IPIECE) {
       blocks = new PVector[]{new PVector(0,0), new PVector(-1,0), new PVector(1,0), new PVector(2,0)}; //center second left
       pieceColor = #00ffff;
+      offsetX = 0;
+      offsetY = 0;
     }
     if (type == LPIECE) {
       blocks = new PVector[]{new PVector(0,0), new PVector(-1,0), new PVector(1,0), new PVector(1,-1)}; //center bottom right 
       pieceColor = #0000ff;
-      //     3
-      // 1 0 2
+      offsetX = 0;
+      offsetY = 0;
     }
-    if (type == JPIECE) {
+    if (type == JPIECE) { 
       blocks = new PVector[]{new PVector(0,0), new PVector(1,0), new PVector(-1,0), new PVector(-1,-1)}; //center bottom left 
       pieceColor = #ff7f00;
-      // 3 
-      // 2 0 1
+      offsetX = 0;
+      offsetY = 0;
     }
     if (type == OPIECE) {
       blocks = new PVector[]{new PVector(0.5,0.5), new PVector(0.5,-0.5), new PVector(-0.5,0.5), new PVector(-0.5,-0.5)}; //center top left
       pieceColor = #ffff00;
+      offsetX = BLOCKSIZE/2;
+      offsetY = BLOCKSIZE/2;
     }
     if (type == TPIECE) {
       blocks = new PVector[]{new PVector(0,0), new PVector(1,0), new PVector(-1,0), new PVector(0,-1)}; //center
       pieceColor = #800080;
+      offsetX = 0;
+      offsetY = 0;
     }
     if (type == ZPIECE) {
       blocks = new PVector[]{new PVector(0,0), new PVector(-1,0), new PVector(0,-1), new PVector(1,-1)}; //center bottom middle
       pieceColor = #00ff00;
+      offsetX = 0;
+      offsetY = 0;
     }
     if (type == SPIECE) {
       blocks = new PVector[]{new PVector(0,0), new PVector(1,0), new PVector(0,-1), new PVector(-1,-1)};
       pieceColor = #ff0000;
+      offsetX = 0;
+      offsetY = 0;
     }
+    centerX = x + offsetX;
+    centerY = y + offsetY;
   }
 
   void left(){
@@ -96,13 +108,29 @@ public class Tetrimino{
   }
   
   void rotatePiece(int[][] board, int dir) {
-    if (!rotateHelper(board, dir)) { //if normal rotation fails
+    if (!rotateHelper(board, dir)) { //if normal rotation fails, move it right 1
       right();
-      if (!rotateHelper(board, dir)) {//if moving it right 1 fails
+      if (!rotateHelper(board, dir)) {//if moving it right 1 fails, move it left 1
         left();
         left();
-        if (!rotateHelper(board,dir)) {//if moving it left 1 fails, return to original position
-          right();
+        if (!rotateHelper(board,dir)) {//if moving it left 1 fails, try moving it left 1 down 1
+          down();
+          if (!rotateHelper(board, dir)) {//if moving it left 1 down 1 fails, try moving it right 1 down 1
+            right();
+            right();
+            if (!rotateHelper(board, dir)) { //try moving it right 1 up 1
+              centerY -= BLOCKSIZE;
+              centerY -= BLOCKSIZE;
+              if (!rotateHelper(board, dir)) { //try moving it left 1 up 1
+                left();
+                left();
+                if (!rotateHelper(board, dir)) { //give up
+                  right();
+                  down();
+                } 
+              } 
+            } 
+          }
         }
       }
     }
@@ -139,7 +167,7 @@ public class Tetrimino{
     stroke(255);
     fill(40);
     for(PVector b : ghost.blocks){
-      rect(ghost.centerX + b.x * BLOCKSIZE, ghost.centerY + b.y * BLOCKSIZE, BLOCKSIZE, BLOCKSIZE);
+      rect(ghost.centerX + b.x * BLOCKSIZE - offsetX, ghost.centerY + b.y * BLOCKSIZE - offsetY, BLOCKSIZE, BLOCKSIZE);
     }
   }
   

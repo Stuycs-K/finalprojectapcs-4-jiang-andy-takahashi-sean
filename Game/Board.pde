@@ -1,4 +1,4 @@
-public class Board {   
+ public class Board {   
   color[][] board;
   
   public Board() {
