@@ -16,7 +16,7 @@ int lines = 0;
 int score = 0;
 int level = 1;
 
-int mode = 1;
+int mode = 0;
 List<Integer> topscores = Arrays.asList(5000, 4000, 3000, 2000, 1000);
 
 
@@ -99,15 +99,16 @@ void displayBag() {
   strokeWeight(0);
   rect(685, 240, 210, 440);
   
-  Tetrimino temp = bag.get(1);
-  temp.displayatpos(750, 310);
-  
-  temp = bag.get(2);
-  temp.displayatpos(750, 445);
-  
-  temp = bag.get(3);
-  temp.displayatpos(750, 580);
-  
+  if(mode == 1){
+    Tetrimino temp = bag.get(1);
+    temp.displayatpos(750, 310);
+    
+    temp = bag.get(2);
+    temp.displayatpos(750, 445);
+    
+    temp = bag.get(3);
+    temp.displayatpos(750, 580);
+  }
 }
   
 void displayHold() {
@@ -240,25 +241,51 @@ void draw() {
   displayBag();
   displayHold();
   displayScore();
-  current.display();
+  
   if (mode == 0){
+    fill(50);
+    rect(246, 150, 406, 801);
+    
+    textSize(70);
+    fill(255, 0, 255);
+    text("T", 340, 250);
+    
+    fill(255, 120, 0);
+    text("E", 380, 250);
+    
+    fill(255, 255, 0);
+    text("T", 420, 250);
+    
+    fill(0, 255, 0);
+    text("R", 460, 250);
+    
+    fill(0, 0, 255);
+    text("I", 505, 250);
+    
+    fill(200, 0, 200);
+    text("S", 530, 250);
+    
+    
     fill(0, 255, 0); //green
-    rect(300, 350, 200, 100); //play button
+    rect(350, 350, 200, 80); //play button
     
     fill(255);
     textSize(30);
-    text("PLAY", 390, 400); //text for play button
+    text("PLAY", 420, 400); //text for play button
     
     fill(150);
-    rect(320, 500, 160, 80); //level button
+    rect(360, 460, 180, 60); //level button
     
     fill(255);
     textSize(25);
-    text("LEVEL: " + level, 390, 540); //dynamic level change text
+    text("LEVEL: " + level, 410, 500); //dynamic level change text
     
+    
+    //display scores
   }
 
-  if (mode == 1) {
+  else if (mode == 1) {
+    current.display();
     tick();
     framesSinceInput++;
   }
@@ -269,52 +296,53 @@ void draw() {
     
     //add current score if applicable
     
-    //for(int i = 4; i >= 0; i--){
-      //if(score > topscores.get(i)){
-        //topscores.add(i + 1, score);
-        //topscores.remove(0);
-      //}
-    //}
+    for(int i = 4; i >= 0; i--){
+      if(score > topscores.get(i)){
+        topscores.add(i + 1, score);
+        topscores.remove(0);
+      }
+    }
     
     
     
     //implement game over screen
     
     
-    //fill(50);
-    //strokeWeight(10);
-    //stroke(200);
-    //rect(200, 200, 550, 500);
+    fill(50);
+    strokeWeight(10);
+    stroke(200);
+    rect(200, 200, 550, 500);
     
-    //fill(0);
-    //strokeWeight(2);
-    //stroke(255);
-    //rect(300, 400, 300, 300);
+    fill(0);
+    strokeWeight(2);
+    stroke(255);
+    rect(300, 400, 300, 300);
     
-    //fill(255);
-    //textSize(35);
-    //text("GAME OVER", 400, 300);
+    fill(255);
+    textSize(35);
+    text("GAME OVER", 400, 300);
     
-    //textSize(30);
-    //text("HIGH SCORES", 420, 410);
+    textSize(30);
+    text("HIGH SCORES", 420, 410);
     
-    //for(int i = 0; i < 5; i++){
-      //textSize(25);
-      //text(topscores[i], 500, 420 + i * 20);
-    //}
+    for(int i = 0; i < 5; i++){
+      textSize(25);
+      text(topscores.get(i), 500, 420 + i * 20);
+    }
     
-    //add score to list of 5 highest
+    
+    
   }
 }
 
 void mouseClicked(){
   if(mode == 0){
-    if((mouseX < 500 && mouseX > 300) && (mouseY < 450 && mouseY > 350)){
+    if((mouseX < 550 && mouseX > 350) && (mouseY < 430 && mouseY > 350)){
       mode = 1;
     }
-    if((mouseX < 480 && mouseX > 320) && (mouseY < 580 && mouseY > 500)){
+    if((mouseX < 540 && mouseX > 360) && (mouseY < 520 && mouseY > 460)){
       if(level == 10){
-        level = -1;
+        level = 0;
       }
       level++;
     }
