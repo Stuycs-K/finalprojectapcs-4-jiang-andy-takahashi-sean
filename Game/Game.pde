@@ -292,9 +292,6 @@ void draw() {
     framesSinceInput++;
   }
   else {
-    fill(255);
-    textSize(40);
-    text("GAME OVER", 410, 435);
     
     //add current score if applicable
     
@@ -314,27 +311,51 @@ void draw() {
     
     //implement game over screen
     
-    
+    //game over
     fill(50);
     strokeWeight(10);
     stroke(200);
     rect(200, 200, 550, 500);
     
+    //high score box
     fill(0);
     strokeWeight(2);
     stroke(255);
-    rect(300, 400, 300, 300);
+    rect(325, 380, 300, 175);
+    
+    //home button
+    fill(100);
+    strokeWeight(2);
+    stroke(255);
+    rect(250, 600, 140, 50);
+    
+    //play again button
+    fill(0, 255, 0);
+    strokeWeight(2);
+    stroke(255);
+    rect(400, 600, 140, 50);
+    
+    //end button
+    fill(255, 0, 0);
+    strokeWeight(2);
+    stroke(255);
+    rect(550, 600, 140, 50);
     
     fill(255);
-    textSize(35);
-    text("GAME OVER", 400, 300);
+    textSize(45);
+    text("GAME OVER", 370, 280);
     
     textSize(30);
-    text("HIGH SCORES", 420, 410);
+    text("HIGH SCORES", 390, 350);
+    
+    textSize(20);
+    text("HOME", 295, 630);
+    text("PLAY AGAIN", 425, 630);
+    text("EXIT", 603, 630);
     
     for(int i = 0; i < 5; i++){
       textSize(25);
-      text(topscores.get(i), 500, 420 + i * 20);
+      text(topscores.get(4 - i), 550, 415 + i * 30);
     }
     
     
