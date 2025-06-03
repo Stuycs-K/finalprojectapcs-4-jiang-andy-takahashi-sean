@@ -40,3 +40,8 @@ Implemented levels based on lines cleared and different gravitational strength b
 ## 2025-06-01: Fixed level/line incrementation
 
 Lines cleared was being incremented twice per tick so deleted one occurence, and fixed to level up when greater or equal to 10 instead of greater than 10.
+
+
+## 2025-06-02: Fixed hold display
+
+Streamlined orientation when holding to fit in display
