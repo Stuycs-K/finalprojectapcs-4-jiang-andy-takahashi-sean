@@ -206,28 +206,31 @@ void calculateScore(int clear){
 
 void keyPressed() {
   framesSinceInput = 0;
-  if (keyCode == DOWN) {
-    if (!current.leftrightCollision(b.board, 0, 1)) current.down();
+  if(mode == 1){
+    if (keyCode == DOWN) {
+      if (!current.leftrightCollision(b.board, 0, 1)) current.down();
+    }
+    if (keyCode == LEFT) {
+      if (!current.leftrightCollision(b.board, -1, 0)) current.left();
+    }
+    if (keyCode == RIGHT) {
+      if (!current.leftrightCollision(b.board, 1, 0)) current.right();
+    }
+    if (key == ' ') {
+      while (!current.leftrightCollision(b.board, 0, 1)) current.down();
+      lockPiece();
+    }
+    if (key == 'f' || key == 'F') {
+      current.rotatePiece(b.board, CLOCKWISE);
+    }
+    if (key == 'a' || key == 'A') {
+      current.rotatePiece(b.board, COUNTERCLOCKWISE);
+    }
+    if (key == 'c' || key == 'C') {
+      holdPiece();
+    }
   }
-  if (keyCode == LEFT) {
-    if (!current.leftrightCollision(b.board, -1, 0)) current.left();
-  }
-  if (keyCode == RIGHT) {
-    if (!current.leftrightCollision(b.board, 1, 0)) current.right();
-  }
-  if (key == ' ') {
-    while (!current.leftrightCollision(b.board, 0, 1)) current.down();
-    lockPiece();
-  }
-  if (key == 'f' || key == 'F') {
-    current.rotatePiece(b.board, CLOCKWISE);
-  }
-  if (key == 'a' || key == 'A') {
-    current.rotatePiece(b.board, COUNTERCLOCKWISE);
-  }
-  if (key == 'c' || key == 'C') {
-    holdPiece();
-  }
+
 }
 
 void endGame() {
@@ -295,10 +298,13 @@ void draw() {
     
     //add current score if applicable
     
-    for(int i = 4; i >= 0; i--){
+    boolean scoreAdd = false;
+    
+    for(int i = 4; i >= 0 && !scoreAdd; i--){
       if(score > topscores.get(i)){
         topscores.add(i + 1, score);
         topscores.remove(0);
+        scoreAdd = true;
       }
     }
     
