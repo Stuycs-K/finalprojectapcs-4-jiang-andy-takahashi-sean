@@ -15,7 +15,7 @@ final int COUNTERCLOCKWISE = 1;
 int lines = 0;
 int score = 0;
 int level = 1;
-
+boolean gameOver = false;
 int SPAWNX = 410;
 int SPAWNY = 150;
 
@@ -228,11 +228,7 @@ void keyPressed() {
 }
 
 void endGame() {
-  fill(255);
-  textSize(40);
-  text("GAME OVER", 410, 435);
-  delay(10000);
-  exit();
+  gameOver = true;
 }
 
 void draw() {
@@ -242,8 +238,15 @@ void draw() {
   displayHold();
   displayScore();
   current.display();
-  tick();
-  framesSinceInput++;
+  if (!gameOver) {
+    tick();
+    framesSinceInput++;
+  }
+  else {
+    fill(255);
+    textSize(40);
+    text("GAME OVER", 410, 435);
+  }
 }
 
 
