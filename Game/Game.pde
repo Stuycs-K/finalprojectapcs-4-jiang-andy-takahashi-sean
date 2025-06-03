@@ -17,14 +17,13 @@ int score = 0;
 int level = 1;
 
 int mode = 0;
-List<Integer> topscores = Arrays.asList(5000, 4000, 3000, 2000, 1000);
-
+ArrayList<Integer> topscores = new ArrayList<>(Arrays.asList(1000, 2000, 3000, 4000, 5000));
 
 int SPAWNX = 410;
 int SPAWNY = 150;
 
 ArrayList<Tetrimino> bag;
-List<Float> speed = Arrays.asList(0.016667, 0.021017, 0.026977, 0.035256, 0.04693, 0.06361, 0.0879, 0.1236, 0.1775, 0.2598, 0.388, 0.59, 0.92, 1.46, 2.36);
+final List<Float> speed = Arrays.asList(0.016667, 0.021017, 0.026977, 0.035256, 0.04693, 0.06361, 0.0879, 0.1236, 0.1775, 0.2598, 0.388, 0.59, 0.92, 1.46, 2.36);
 
 boolean canHold;
 Tetrimino hold;
@@ -303,7 +302,9 @@ void draw() {
       }
     }
     
-    
+    score = 0;
+    level = 1;
+    lines = 0;
     
     //implement game over screen
     
