@@ -50,3 +50,8 @@ Streamlined orientation when holding to fit in display; made start, game, end mo
 ## 2025-06-03: Clean up displays and add buttons
 
 Made keypressed only work during gameplay to prevent blocks dropping at game start display; added game over buttons and changed spacing; fixed order of top 5 scores and update algorithm
+
+
+## 2025-06-04: Text display during game
+
+Added text popup of lines cleared and points scored
