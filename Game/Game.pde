@@ -72,7 +72,7 @@ void lockPiece() {
   int linescleared = b.updateBoard();
   lines += linescleared;
   calculateScore(linescleared);
-  if(linescleared != 0 && (prevlines % 10) + linescleared >= 10){
+  if(linescleared != 0 && (prevlines % 10) + linescleared >= 10 && level < 15){
     level++;
   }
   canHold = true;
@@ -248,6 +248,14 @@ void draw() {
     fill(50);
     rect(246, 150, 406, 801);
     
+    fill(0, 50, 240);
+    strokeWeight(10);
+    stroke(0, 70, 240);
+    rect(330, 185, 245, 90);
+    rect(411, 275, 82, 80);
+    strokeWeight(0);
+    rect(417, 265, 72, 20);
+    
     textSize(70);
     fill(255, 0, 255);
     text("T", 340, 250);
@@ -261,29 +269,45 @@ void draw() {
     fill(0, 255, 0);
     text("R", 460, 250);
     
-    fill(0, 0, 255);
+    fill(0, 191, 255);
     text("I", 505, 250);
     
     fill(200, 0, 200);
     text("S", 530, 250);
     
-    
+    strokeWeight(2);
+    stroke(255);
     fill(0, 255, 0); //green
-    rect(350, 350, 200, 80); //play button
+    rect(350, 415, 200, 65); //play button
     
     fill(255);
     textSize(30);
-    text("PLAY", 420, 400); //text for play button
+    text("PLAY", 420, 455); //text for play button
     
     fill(150);
-    rect(360, 460, 180, 60); //level button
+    rect(360, 505, 180, 55); //level button
+    strokeWeight(0);
     
     fill(255);
     textSize(25);
-    text("LEVEL: " + level, 410, 500); //dynamic level change text
+    text("LEVEL: " + level, 407, 540); //dynamic level change text
     
     
     //display scores
+    
+    fill(0);
+    strokeWeight(2);
+    stroke(255);
+    rect(300, 620, 300, 225);
+    
+    textSize(30);
+    fill(255);
+    text("HIGH SCORES", 365, 660);
+    
+    for(int i = 0; i < 5; i++){
+      textSize(25);
+      text(topscores.get(4 - i), 520, 710 + i * 30);
+    }
   }
 
   else if (mode == 1) {
@@ -365,10 +389,10 @@ void draw() {
 
 void mouseClicked(){
   if(mode == 0){
-    if((mouseX < 550 && mouseX > 350) && (mouseY < 430 && mouseY > 350)){
+    if((mouseX < 550 && mouseX > 350) && (mouseY < 480 && mouseY > 415)){
       mode = 1;
     }
-    if((mouseX < 540 && mouseX > 360) && (mouseY < 520 && mouseY > 460)){
+    if((mouseX < 540 && mouseX > 360) && (mouseY < 560 && mouseY > 505)){
       if(level == 10){
         level = 0;
       }
