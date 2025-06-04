@@ -295,7 +295,19 @@ void draw() {
     
     //display scores
     
+    fill(0);
+    strokeWeight(2);
+    stroke(255);
+    rect(300, 620, 300, 225);
     
+    textSize(30);
+    fill(255);
+    text("HIGH SCORES", 365, 660);
+    
+    for(int i = 0; i < 5; i++){
+      textSize(25);
+      text(topscores.get(4 - i), 520, 710 + i * 30);
+    }
   }
 
   else if (mode == 1) {
