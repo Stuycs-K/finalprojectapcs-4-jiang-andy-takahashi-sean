@@ -113,7 +113,7 @@ public class Tetrimino{
   }
   
   void ccwKicks(int[][] board) {
-    PVector[] priorities = new PVector[]{new PVector(0,0), new PVector(1,0), new PVector(1,-1), new PVector(0,2), new PVector(1, 2)};
+    PVector[] priorities = new PVector[]{new PVector(0,0), new PVector(1,0), new PVector(1,1), new PVector(0,2), new PVector(1, 2)};
     for (int i = 0; i < priorities.length; i++) {
       if (rotateHelper(board, COUNTERCLOCKWISE, (int) priorities[i].x, (int) priorities[i].y)) {
         break;
