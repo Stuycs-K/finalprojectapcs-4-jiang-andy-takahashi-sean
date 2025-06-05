@@ -70,10 +70,31 @@ void lockPiece() {
   updateBag();
   int prevlines = lines;
   int linescleared = b.updateBoard();
+  
+  if(linescleared > 0){
+    fill(255);
+    textSize(30);
+    if(linescleared == 1){
+      text("SINGLE!", 400, 600);
+    }
+    else if(linescleared == 2){
+      text("DOUBLE!", 400, 600);
+    }
+    else if(linescleared == 3){
+      text("TRIPLE!", 400, 600);
+    }
+    else{
+      text("TETRIS!", 400, 600);
+    }
+  }
+  
   lines += linescleared;
-  calculateScore(linescleared);
+  score += calculateScore(linescleared);
   if(linescleared != 0 && (prevlines % 10) + linescleared >= 10 && level < 15){
     level++;
+    fill(255);
+    textSize(30);
+    text("LEVEL UP!", 400, 400);
   }
   canHold = true;
 }
@@ -183,24 +204,29 @@ void displayScore() {
   text(lines, 105, 890);
 }
 
-void calculateScore(int clear){
-  if(clear == 0) return;
+int calculateScore(int clear){
+  int points = 0;
+  if(clear == 0){
+    return 0;
+  }
   
   if(clear == 1){
-    score += 100 * level;
+    points = 100 * level;
   }
   
   if(clear == 2){
-    score += 300 * level;
+    points = 300 * level;
   }
   
   if(clear == 3){
-    score += 500 * level;
+    points = 500 * level;
   }
   
   if(clear == 4){
-    score += 800 * level;
+    points = 800 * level;
   }
+  
+  return points;
 
 }
 
@@ -312,6 +338,7 @@ void draw() {
 
   else if (mode == 1) {
     current.display();
+    
     tick();
     framesSinceInput++;
   }
