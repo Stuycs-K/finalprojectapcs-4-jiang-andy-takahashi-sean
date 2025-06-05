@@ -30,3 +30,6 @@ Added basic rotation kicks (still need to work on S, Z, and T-spins) and improve
 
 ### 2025-06-02
 Added the end of the game, and shifted spawn higher.
+
+### 2025-06-03
+Changed the way the rotation system worked in order to make kicks easier.
