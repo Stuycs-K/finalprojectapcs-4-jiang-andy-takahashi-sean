@@ -82,7 +82,9 @@ public class Tetrimino{
     }
   }
   
-  boolean rotateHelper(int[][] board, int dir) {
+  boolean rotateHelper(int[][] board, int dir, int xOff, int yOff) {
+    centerX += xOff * BLOCKSIZE;
+    centerY += yOff * BLOCKSIZE;
     if (dir == CLOCKWISE) {
       arrayCW(blocks);
     }
@@ -94,47 +96,45 @@ public class Tetrimino{
       int r = getRowNum(b);
       int c = getColNum(b);
       if (r >= board.length || c >= board[0].length || c < 0 || (r >= 0 && board[r][c] != 0)) {
-        if (dir == CLOCKWISE) { //rotate back if there was a collision
-          arrayCCW(blocks);
+        if (dir == CLOCKWISE) {
+          arrayCCW(blocks); //rotate back if collision
         }
         if (dir == COUNTERCLOCKWISE) {
           arrayCW(blocks);
         }
+        centerX -= xOff * BLOCKSIZE;
+        centerY -= yOff * BLOCKSIZE;
         return false;
       }
     }
-    //if no collision, rotation is done
+    
+
     return true;
   }
   
-  void rotatePiece(int[][] board, int dir) {
-    if (!rotateHelper(board, dir)) { //if normal rotation fails, move it right 1
-      right();
-      if (!rotateHelper(board, dir)) {//if moving it right 1 fails, move it left 1
-        left();
-        left();
-        if (!rotateHelper(board,dir)) {//if moving it left 1 fails, try moving it left 1 down 1
-          down();
-          if (!rotateHelper(board, dir)) {//if moving it left 1 down 1 fails, try moving it right 1 down 1
-            right();
-            right();
-            if (!rotateHelper(board, dir)) { //try moving it right 1 up 1
-              centerY -= BLOCKSIZE;
-              centerY -= BLOCKSIZE;
-              if (!rotateHelper(board, dir)) { //try moving it left 1 up 1
-                left();
-                left();
-                if (!rotateHelper(board, dir)) { //give up
-                  right();
-                  down();
-                } 
-              } 
-            } 
-          }
-        }
+  void ccwKicks(int[][] board) {
+    PVector[] priorities = new PVector[]{new PVector(0,0), new PVector(1,0), new PVector(1,1), new PVector(0,2), new PVector(1, 2)};
+    for (int i = 0; i < priorities.length; i++) {
+      if (rotateHelper(board, COUNTERCLOCKWISE, (int) priorities[i].x, (int) priorities[i].y)) {
+        break;
       }
     }
   }
+  
+  void cwKicks(int[][] board) {
+    PVector[] priorities = new PVector[]{new PVector(0,0), new PVector(-1,0), new PVector(-1,-1), new PVector(0,2), new PVector(-1, 2)};
+    for (int i = 0; i < priorities.length; i++) {
+      if (rotateHelper(board, CLOCKWISE, (int) priorities[i].x, (int) priorities[i].y)) {
+        break;
+      }
+    }
+  }
+  
+  void rotatePiece(int[][] board, int dir) {
+    if (dir == CLOCKWISE) cwKicks(board);
+    if (dir == COUNTERCLOCKWISE) ccwKicks(board);
+  }
+  
   
   void down(){
     centerY += BLOCKSIZE;
