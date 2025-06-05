@@ -33,3 +33,6 @@ Added the end of the game, and shifted spawn higher.
 
 ### 2025-06-03
 Changed the way the rotation system worked in order to make kicks easier.
+
+### 2025-06-04
+Finished the full rotation system. Need to implement scoring for special rotations.
