@@ -161,7 +161,7 @@ public class Tetrimino{
       rect(centerX + b.x * BLOCKSIZE, centerY + b.y * BLOCKSIZE, BLOCKSIZE, BLOCKSIZE);
     }
     fill(255);
-    rect(centerX, centerY , BLOCKSIZE, BLOCKSIZE);
+    //rect(centerX, centerY , BLOCKSIZE, BLOCKSIZE);
   }
   
   void displayatpos(int x, int y){
