@@ -431,9 +431,19 @@ void mouseClicked(){
     if(mouseY < 650 && mouseY > 600){
       if(mouseX < 390 && mouseX > 250){
         mode = 0;
+        b = new Board();
+        bag = new ArrayList<Tetrimino>();
+        generateBag();
+        current = bag.get(0);
+        hold = null;
       }
       else if(mouseX < 540 && mouseX > 400){
         mode = 1;
+        b = new Board();
+        bag = new ArrayList<Tetrimino>();
+        generateBag();
+        current = bag.get(0);
+        hold = null;
       }
       else{
         exit();
