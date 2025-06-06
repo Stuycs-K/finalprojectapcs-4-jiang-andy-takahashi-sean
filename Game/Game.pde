@@ -15,6 +15,7 @@ final int COUNTERCLOCKWISE = 1;
 int lines = 0;
 int score = 0;
 int level = 1;
+int displayTime = 10;
 
 int mode = 0;
 ArrayList<Integer> topscores = new ArrayList<>(Arrays.asList(1000, 2000, 3000, 4000, 5000));
@@ -47,7 +48,8 @@ void generateBag() {
   bag.addAll(temp);
 }
 
-void tick() {
+int tick() {
+  int ret = 0;
   if (frameCount % int(1 / speed.get(level - 1)) == 0) {
     if (!current.leftrightCollision(b.board, 0, 1)) { //if no collision down, move down
       framesUntilLock = int(1 / speed.get(level - 1)) * 3;
@@ -56,37 +58,23 @@ void tick() {
     else if (framesSinceInput <= 10 && framesUntilLock > 0) { //if there was a recent input and it hasn't been stuck for too long, delay for a while
       framesUntilLock -= int(1 / speed.get(level - 1));
     }
-    else lockPiece();
+    else{
+      return lockPiece();}
   }
+  return ret;
 }
 
-void lockPiece() {
+int lockPiece() {
   for (PVector p : current.blocks) {
     if (current.getRowNum(p) < 0) endGame();
     else b.board[current.getRowNum(p)][current.getColNum(p)] = current.pieceColor;
   }
   bag.remove(0);
   current = bag.get(0);
+  frameCount = 0;
   updateBag();
   int prevlines = lines;
   int linescleared = b.updateBoard();
-  
-  if(linescleared > 0){
-    fill(255);
-    textSize(30);
-    if(linescleared == 1){
-      text("SINGLE!", 400, 600);
-    }
-    else if(linescleared == 2){
-      text("DOUBLE!", 400, 600);
-    }
-    else if(linescleared == 3){
-      text("TRIPLE!", 400, 600);
-    }
-    else{
-      text("TETRIS!", 400, 600);
-    }
-  }
   
   lines += linescleared;
   score += calculateScore(linescleared);
@@ -97,6 +85,10 @@ void lockPiece() {
     text("LEVEL UP!", 400, 400);
   }
   canHold = true;
+  
+  print(linescleared + "lock");
+  
+  return linescleared;
 }
 
 void updateBag(){
@@ -339,7 +331,29 @@ void draw() {
   else if (mode == 1) {
     current.display();
     
-    tick();
+    int linescleared = tick();
+    
+    if(linescleared > 0){
+      print("run");
+      int currentTime = frameCount;
+      while(frameCount - currentTime < displayTime){
+        print("while");
+        fill(255);
+        textSize(30);
+        if(linescleared == 1){
+          text("SINGLE!", 400, 600);
+        }
+        else if(linescleared == 2){
+          text("DOUBLE!", 400, 600);
+        }
+        else if(linescleared == 3){
+          text("TRIPLE!", 400, 600);
+        }
+        else{
+          text("TETRIS!", 400, 600);
+        }
+      }
+    }
     framesSinceInput++;
   }
   else {
