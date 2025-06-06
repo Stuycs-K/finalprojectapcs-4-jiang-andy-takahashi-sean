@@ -42,8 +42,9 @@
   - ~~Helper method to see if a block collides with the border or another block~~
 - (new) boolean leftrightCollision(int[][] board, int dx, int dy)
   - Determines if it is possible to move left, right, or down (no rotations)
-- ~~(new) void rotationCollision(int[][] board, PVector[] rot)~~ (newer) boolean -~~rotatePiece~~ rotateHelper(int[][] board, int dir)
-  - Determines if it is possible to rotate
+- ~~(new) void rotationCollision(int[][] board, PVector[] rot)~~ (newer) boolean -~~rotatePiece~~ ~~rotateHelper(int[][] board, int dir)~~ (new) rotateHelper(int[][] board, int dir, PVector offset)
+  - Determines if it is possible to rotate 
+    - (new) tries to shift the piece by offset first, and then checks if rotation is possible
   - (new) now rotates the piece if it is possible to rotate (replaces counterclockwise() and clockwise() since we have to rotate in this method anyways)
   - returns true if successful, false if there was something in the way
   - renamed to rotateHelper, and the new rotatePiece method accounts for wall kicks.
