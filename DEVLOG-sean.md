@@ -55,3 +55,8 @@ Made keypressed only work during gameplay to prevent blocks dropping at game sta
 ## 2025-06-04: Text display during game
 
 Added text popup of lines cleared and points scored
+
+
+## 2025-06-05: Clear board
+
+Cleared board after game over and return home or play again.
