@@ -10,8 +10,10 @@ public class Tetrimino{
   int piecetype;
   PVector[] blocks;
   int orientation;
+  String lastSpin;
 
   Tetrimino(int x, int y, int type){
+    lastSpin = "";
     piecetype = type;
     orientation = 0;
     if (type == IPIECE) {
@@ -116,7 +118,7 @@ public class Tetrimino{
     return true;
   }
   
-  void ccwKicks(int[][] board) {
+  int ccwKicks(int[][] board) {
     PVector[] priorities = new PVector[5];
     if (orientation == 0) priorities = new PVector[]{new PVector(0,0), new PVector(1,0), new PVector(1,1), new PVector(0,-2), new PVector(1, -2)};
     if (orientation == 1) priorities = new PVector[]{new PVector(0,0), new PVector(1,0), new PVector(1,-1), new PVector(0,2), new PVector(1,2)};
@@ -124,12 +126,13 @@ public class Tetrimino{
     if (orientation == 3) priorities = new PVector[]{new PVector(0,0), new PVector(1,0), new PVector(1,1), new PVector(0,2), new PVector(1, 2)};
     for (int i = 0; i < priorities.length; i++) {
       if (rotateHelper(board, COUNTERCLOCKWISE, (int) priorities[i].x, -(int) priorities[i].y)) {
-        break;
+        return i;
       }
     }
+    return 0;
   }
   
-  void cwKicks(int[][] board) {
+  int cwKicks(int[][] board) {
     PVector[] priorities = new PVector[5];
     if (orientation == 3) priorities = new PVector[]{new PVector(0,0), new PVector(-1,0), new PVector(-1,-1), new PVector(0,2), new PVector(-1, 2)};
     if (orientation == 0) priorities = new PVector[]{new PVector(0,0), new PVector(-1,0), new PVector(-1,1), new PVector(0,-2), new PVector(-1,-2)};
@@ -137,14 +140,36 @@ public class Tetrimino{
     if (orientation == 2) priorities = new PVector[]{new PVector(0,0), new PVector(-1,0), new PVector(-1,-1), new PVector(0,-2), new PVector(-1,2)};
     for (int i = 0; i < priorities.length; i++) {
       if (rotateHelper(board, CLOCKWISE, (int) priorities[i].x, -(int) priorities[i].y)) {
-        break;
+        return i;
       }
     }
+    return -1;
   }
   
   void rotatePiece(int[][] board, int dir) {
-    if (dir == CLOCKWISE) cwKicks(board);
-    if (dir == COUNTERCLOCKWISE) ccwKicks(board);
+    int r = 0;
+    if (dir == CLOCKWISE) {
+      r = cwKicks(board);
+    }
+
+    if (dir == COUNTERCLOCKWISE) {
+      r = ccwKicks(board);
+    }
+    if (r != -1) {   
+      if (piecetype == TPIECE) {
+        if (r == 2) lastSpin = "Mini T-Spin";
+        else if (r == 4) lastSpin = "T-Spin"; 
+        else if (r == 0 && orientation == 2 && (board[getRowNum(new PVector(-1, 1))][getColNum(new PVector(-1, 1))] != 0 && board[getRowNum(new PVector(-1, 1))][getColNum(new PVector(-1, 1))] != 0) && (board[getRowNum(new PVector(-1, -1))][getColNum(new PVector(-1, -1))] != 0 || board[getRowNum(new PVector(1, -1))][getColNum(new PVector(1, -1))] != 0)) { //hard coding doubles
+          lastSpin = "T-Spin";
+        }
+      }
+      else if (piecetype == ZPIECE) {
+        if (r == 2) lastSpin = "Z-Spin";
+      }
+      else if (piecetype == SPIECE) {
+        if (r == 2) lastSpin = "S-Spin";
+      }
+    }
   }
   
   
