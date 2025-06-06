@@ -15,6 +15,7 @@ final int COUNTERCLOCKWISE = 1;
 int lines = 0;
 int score = 0;
 int level = 1;
+int displayTime = 10;
 
 int mode = 0;
 ArrayList<Integer> topscores = new ArrayList<>(Arrays.asList(1000, 2000, 3000, 4000, 5000));
@@ -32,7 +33,7 @@ Tetrimino current;
 Board b;
 
 int framesSinceInput = 0;
-int framesUntilLock = 200;
+int framesUntilLock = 100;
 
 void generateBag() {
   ArrayList<Tetrimino> temp = new ArrayList<Tetrimino>();
@@ -47,35 +48,47 @@ void generateBag() {
   bag.addAll(temp);
 }
 
-void tick() {
+int tick() {
+  int ret = 0;
   if (frameCount % int(1 / speed.get(level - 1)) == 0) {
     if (!current.leftrightCollision(b.board, 0, 1)) { //if no collision down, move down
-      framesUntilLock = 200;
+      framesUntilLock = int(1 / speed.get(level - 1)) * 3;
       current.down();
     }
-    else if (framesSinceInput <= 30 && framesUntilLock > 0) { //if there was a recent input and it hasn't been stuck for too long, delay for a while
-      framesUntilLock -= 20;
+    else if (framesSinceInput <= 10 && framesUntilLock > 0) { //if there was a recent input and it hasn't been stuck for too long, delay for a while
+      framesUntilLock -= int(1 / speed.get(level - 1));
     }
-    else lockPiece();
+    else{
+      return lockPiece();}
   }
+  return ret;
 }
 
-void lockPiece() {
+int lockPiece() {
   for (PVector p : current.blocks) {
     if (current.getRowNum(p) < 0) endGame();
     else b.board[current.getRowNum(p)][current.getColNum(p)] = current.pieceColor;
   }
   bag.remove(0);
   current = bag.get(0);
+  frameCount = 0;
   updateBag();
   int prevlines = lines;
   int linescleared = b.updateBoard();
+  
   lines += linescleared;
-  calculateScore(linescleared);
-  if(linescleared != 0 && (prevlines % 10) + linescleared >= 10){
+  score += calculateScore(linescleared);
+  if(linescleared != 0 && (prevlines % 10) + linescleared >= 10 && level < 15){
     level++;
+    fill(255);
+    textSize(30);
+    text("LEVEL UP!", 400, 400);
   }
   canHold = true;
+  
+  print(linescleared + "lock");
+  
+  return linescleared;
 }
 
 void updateBag(){
@@ -183,24 +196,29 @@ void displayScore() {
   text(lines, 105, 890);
 }
 
-void calculateScore(int clear){
-  if(clear == 0) return;
+int calculateScore(int clear){
+  int points = 0;
+  if(clear == 0){
+    return 0;
+  }
   
   if(clear == 1){
-    score += 100 * level;
+    points = 100 * level;
   }
   
   if(clear == 2){
-    score += 300 * level;
+    points = 300 * level;
   }
   
   if(clear == 3){
-    score += 500 * level;
+    points = 500 * level;
   }
   
   if(clear == 4){
-    score += 800 * level;
+    points = 800 * level;
   }
+  
+  return points;
 
 }
 
@@ -248,6 +266,14 @@ void draw() {
     fill(50);
     rect(246, 150, 406, 801);
     
+    fill(0, 50, 240);
+    strokeWeight(10);
+    stroke(0, 70, 240);
+    rect(330, 185, 245, 90);
+    rect(411, 275, 82, 80);
+    strokeWeight(0);
+    rect(417, 265, 72, 20);
+    
     textSize(70);
     fill(255, 0, 255);
     text("T", 340, 250);
@@ -261,34 +287,73 @@ void draw() {
     fill(0, 255, 0);
     text("R", 460, 250);
     
-    fill(0, 0, 255);
+    fill(0, 191, 255);
     text("I", 505, 250);
     
     fill(200, 0, 200);
     text("S", 530, 250);
     
-    
+    strokeWeight(2);
+    stroke(255);
     fill(0, 255, 0); //green
-    rect(350, 350, 200, 80); //play button
+    rect(350, 415, 200, 65); //play button
     
     fill(255);
     textSize(30);
-    text("PLAY", 420, 400); //text for play button
+    text("PLAY", 420, 455); //text for play button
     
     fill(150);
-    rect(360, 460, 180, 60); //level button
+    rect(360, 505, 180, 55); //level button
+    strokeWeight(0);
     
     fill(255);
     textSize(25);
-    text("LEVEL: " + level, 410, 500); //dynamic level change text
+    text("LEVEL: " + level, 407, 540); //dynamic level change text
     
     
     //display scores
+    
+    fill(0);
+    strokeWeight(2);
+    stroke(255);
+    rect(300, 620, 300, 225);
+    
+    textSize(30);
+    fill(255);
+    text("HIGH SCORES", 365, 660);
+    
+    for(int i = 0; i < 5; i++){
+      textSize(25);
+      text(topscores.get(4 - i), 520, 710 + i * 30);
+    }
   }
 
   else if (mode == 1) {
     current.display();
-    tick();
+    
+    int linescleared = tick();
+    
+    if(linescleared > 0){
+      print("run");
+      int currentTime = frameCount;
+      while(frameCount - currentTime < displayTime){
+        print("while");
+        fill(255);
+        textSize(30);
+        if(linescleared == 1){
+          text("SINGLE!", 400, 600);
+        }
+        else if(linescleared == 2){
+          text("DOUBLE!", 400, 600);
+        }
+        else if(linescleared == 3){
+          text("TRIPLE!", 400, 600);
+        }
+        else{
+          text("TETRIS!", 400, 600);
+        }
+      }
+    }
     framesSinceInput++;
   }
   else {
@@ -365,10 +430,10 @@ void draw() {
 
 void mouseClicked(){
   if(mode == 0){
-    if((mouseX < 550 && mouseX > 350) && (mouseY < 430 && mouseY > 350)){
+    if((mouseX < 550 && mouseX > 350) && (mouseY < 480 && mouseY > 415)){
       mode = 1;
     }
-    if((mouseX < 540 && mouseX > 360) && (mouseY < 520 && mouseY > 460)){
+    if((mouseX < 540 && mouseX > 360) && (mouseY < 560 && mouseY > 505)){
       if(level == 10){
         level = 0;
       }
@@ -380,9 +445,19 @@ void mouseClicked(){
     if(mouseY < 650 && mouseY > 600){
       if(mouseX < 390 && mouseX > 250){
         mode = 0;
+        b = new Board();
+        bag = new ArrayList<Tetrimino>();
+        generateBag();
+        current = bag.get(0);
+        hold = null;
       }
       else if(mouseX < 540 && mouseX > 400){
         mode = 1;
+        b = new Board();
+        bag = new ArrayList<Tetrimino>();
+        generateBag();
+        current = bag.get(0);
+        hold = null;
       }
       else{
         exit();
