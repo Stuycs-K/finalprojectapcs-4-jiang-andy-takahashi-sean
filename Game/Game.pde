@@ -16,7 +16,9 @@ int lines = 0;
 int score = 0;
 int level = 1;
 int displayTime = 10;
-int prevlines;
+int lastClear = 0;
+String lastSpin = "";
+int timeSinceLastClear = 0;
 
 int mode = 0;
 ArrayList<Integer> topscores = new ArrayList<>(Arrays.asList(1000, 2000, 3000, 4000, 5000));
@@ -35,6 +37,16 @@ Board b;
 
 int framesSinceInput = 0;
 int framesUntilLock = 100;
+
+void dtCannon() {  //hardcodes opening pieces
+  bag.add(new Tetrimino(SPAWNX, SPAWNY, JPIECE));
+  bag.add(new Tetrimino(SPAWNX, SPAWNY, LPIECE));
+  bag.add(new Tetrimino(SPAWNX, SPAWNY, IPIECE));
+  bag.add(new Tetrimino(SPAWNX, SPAWNY, OPIECE));
+  bag.add(new Tetrimino(SPAWNX, SPAWNY, ZPIECE));
+  bag.add(new Tetrimino(SPAWNX, SPAWNY, SPIECE));
+  bag.add(new Tetrimino(SPAWNX, SPAWNY, TPIECE));
+}
 
 void generateBag() {
   ArrayList<Tetrimino> temp = new ArrayList<Tetrimino>();
@@ -63,11 +75,12 @@ void tick() {
   }
 }
 
-int lockPiece() {
+void lockPiece() {
   for (PVector p : current.blocks) {
     if (current.getRowNum(p) < 0) endGame();
     else b.board[current.getRowNum(p)][current.getColNum(p)] = current.pieceColor;
   }
+  lastSpin = current.lastSpin;
   bag.remove(0);
   current = bag.get(0);
   frameCount = 0;
@@ -86,9 +99,11 @@ int lockPiece() {
   }
   canHold = true;
   
-  print(linescleared + "lock");
-  
-  return linescleared;
+  //print(linescleared + "lock");
+  if (linescleared != 0) {
+    timeSinceLastClear = 0;
+    lastClear = linescleared;
+  }
 }
 
 void updateBag(){
@@ -350,8 +365,24 @@ void draw() {
 
   else if (mode == 1) {
     current.display();
-
-    if(prevlines > 0) displayClear(prevlines);
+    tick();
+    if(lastClear > 0 && timeSinceLastClear < 50){
+      timeSinceLastClear++;
+      fill(255);
+      textSize(30);
+      if(lastClear == 1){
+        text(lastSpin + "Single!", 400, 600);    
+      }
+      else if(lastClear == 2){
+        text(lastSpin + "Double!", 400, 600);
+      }
+      else if(lastClear == 3){
+        text(lastSpin + "Triple!", 400, 600);
+      }
+      else{
+        text("TETRIS!", 400, 600);
+      }
+    }
     framesSinceInput++;
   }
   else {
@@ -470,6 +501,7 @@ void setup() {
   background(255);
   b = new Board();
   bag = new ArrayList<Tetrimino>();
+  dtCannon();
   generateBag();
   current = bag.get(0);
 }

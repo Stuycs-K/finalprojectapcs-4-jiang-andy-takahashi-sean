@@ -157,17 +157,17 @@ public class Tetrimino{
     }
     if (r != -1) {   
       if (piecetype == TPIECE) {
-        if (r == 2) lastSpin = "Mini T-Spin";
-        else if (r == 4) lastSpin = "T-Spin"; 
+        if (r == 2) lastSpin = "Mini T-Spin ";
+        else if (r == 4) lastSpin = "T-Spin "; 
         else if (r == 0 && orientation == 2 && (board[getRowNum(new PVector(-1, 1))][getColNum(new PVector(-1, 1))] != 0 && board[getRowNum(new PVector(-1, 1))][getColNum(new PVector(-1, 1))] != 0) && (board[getRowNum(new PVector(-1, -1))][getColNum(new PVector(-1, -1))] != 0 || board[getRowNum(new PVector(1, -1))][getColNum(new PVector(1, -1))] != 0)) { //hard coding doubles
-          lastSpin = "T-Spin";
+          lastSpin = "T-Spin ";
         }
       }
       else if (piecetype == ZPIECE) {
-        if (r == 2) lastSpin = "Z-Spin";
+        if (r == 2) lastSpin = "Z-Spin ";
       }
       else if (piecetype == SPIECE) {
-        if (r == 2) lastSpin = "S-Spin";
+        if (r == 2) lastSpin = "S-Spin ";
       }
     }
   }
