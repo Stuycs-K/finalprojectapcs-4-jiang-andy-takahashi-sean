@@ -17,7 +17,7 @@ int score = 0;
 int level = 1;
 int displayTime = 10;
 int lastClear = 0;
-String lastSpin = "nothing";
+String lastSpin = "";
 int timeSinceLastClear = 0;
 
 int mode = 0;
@@ -61,7 +61,7 @@ void generateBag() {
   bag.addAll(temp);
 }
 
-String tick() {
+void tick() {
   if (frameCount % int(1 / speed.get(level - 1)) == 0) {
     if (!current.leftrightCollision(b.board, 0, 1)) { //if no collision down, move down
       framesUntilLock = int(1 / speed.get(level - 1)) * 3;
@@ -71,17 +71,16 @@ String tick() {
       framesUntilLock -= int(1 / speed.get(level - 1));
     }
     else{
-      return lockPiece();}
+      lockPiece();}
   }
-  return "";
 }
 
-String lockPiece() {
+void lockPiece() {
   for (PVector p : current.blocks) {
     if (current.getRowNum(p) < 0) endGame();
     else b.board[current.getRowNum(p)][current.getColNum(p)] = current.pieceColor;
   }
-  String ret = current.lastSpin;
+  lastSpin = current.lastSpin;
   bag.remove(0);
   current = bag.get(0);
   frameCount = 0;
@@ -99,12 +98,11 @@ String lockPiece() {
   }
   canHold = true;
   
-  print(linescleared + "lock");
+  //print(linescleared + "lock");
   if (linescleared != 0) {
     timeSinceLastClear = 0;
     lastClear = linescleared;
   }
-  return ret;
 }
 
 void updateBag(){
@@ -346,21 +344,22 @@ void draw() {
 
   else if (mode == 1) {
     current.display();
+    tick();
     if(lastClear > 0 && timeSinceLastClear < 50){
       timeSinceLastClear++;
       fill(255);
       textSize(30);
       if(lastClear == 1){
-        text(lastSpin + "SINGLE!", 400, 600);    
+        text(lastSpin + "Single!", 400, 600);    
       }
       else if(lastClear == 2){
-        text(s + "DOUBLE!", 400, 600);
+        text(lastSpin + "Double!", 400, 600);
       }
       else if(lastClear == 3){
-        text(s + "TRIPLE!", 400, 600);
+        text(lastSpin + "Triple!", 400, 600);
       }
       else{
-        text(s + "TETRIS!", 400, 600);
+        text("TETRIS!", 400, 600);
       }
     }
     framesSinceInput++;
