@@ -2,7 +2,6 @@
 # Technical Details:
 
 ## Tetrimino
-- Abstract class
 ### Fields
 - color pieceColor
   - Color for each piece.
@@ -10,12 +9,16 @@
   - x coordinate of center block.
 - int centerY
   - y coordinate of center block.
+- (new) int offsetX
+- (new) int offsetY
 - ~~PVector[][] blocks~~
   - ~~Subarray containing different orientations of each tetrimino as PVectors, outer array represents different types~~
 - (new) PVector[] blocks
   - Size 4 array, each vector contains relative position to a center block.
 - (new) int piecetype
   - Used in ghost block methods
+- (new) int orientation
+  - 0-3 for the 4 different orientations, stores current orientation to be evaluated for kicks
 
 ### Methods
 - (new) Tetrimino(int x, int y, int type)
@@ -57,12 +60,17 @@
   - Given the center position (centerY) and the displacement (v), returns the corresponding rowNum in board
 - (new) int getColNum(PVector v)
 - (new) displayGhost()
-  - Displays where the block would go if it was hard dropped  
+  - Displays where the block would go if it was hard dropped
+- (new) displayatpos(int x, int y)
+  - Displays tetrimino at given (x, y) coordinate of the screen, used for bag and hold display
 
 ## Board
 ### Fields
-- int[][] board
-    - Each integer denotes the color of the block in that spot. 0 denotes that the square is empty.
+- ~int[][] board~
+    - ~Each integer denotes the color of the block in that spot. 0 denotes that the square is empty.~
+    - ~10 x 20 board~
+- (new) color[][] board
+    - Stores the color at each square. 
     - 10 x 20 board
 - ~~int score~~ EVERYTHING BELOW MOVED TO GAME CLASS
 - ~~Tetrimino hold~~
@@ -84,6 +92,10 @@
 - (new) void displayBoard()
     - ~~Calls displayBoard(), displayScore(), displayHold(), displayBag()~~
     - (newer) just displays board
+- (new) int updateBoard()
+    - Checks for any completed lines, calls clearRow and also returns number of rows cleared
+- (new) void clearRow(int r)
+    - Moves all rows down by one
 
 ## (New) Game
 ### Fields
@@ -119,9 +131,13 @@
 
 # Project Design
 
-![UMLDiagram](UMLdiagram.png)
+(old)
+![UMLDiagram_OLD](UMLdiagram.png)
 
-The ~Board~ (new) Game class will act as the "main" class, of which the Processing project will be made off of. It will deal with most of the functionality of the game, including score tracking, UI, tetrimino randomization, and clearing/bonuses. Each piece will inherit the Tetrimino class, and have small tweaks based on their shape and color.
+(new)
+![UMLDiagram_NEW](UMLdiagram_final.png)
+
+The ~Board~ (new) Game class will act as the "main" class, of which the Processing project will be made off of. It will deal with most of the functionality of the game, including score tracking, UI, tetrimino randomization, and clearing/bonuses. ~Each piece will inherit the Tetrimino class, and have small tweaks based on their shape and color.~ The tetrimino class contains all variations with their respective shapes, orientations, and colors. This class deals with rotations, kicks, and displaying the tetrimino.
 
 # Intended pacing:
 
