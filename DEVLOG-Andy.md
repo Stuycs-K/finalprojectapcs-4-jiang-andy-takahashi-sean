@@ -36,3 +36,5 @@ Changed the way the rotation system worked in order to make kicks easier.
 
 ### 2025-06-04
 Finished the full rotation system. Need to implement scoring for special rotations.
+
+I believe this document accurately reflects the contributions of my teamate. - Sean
