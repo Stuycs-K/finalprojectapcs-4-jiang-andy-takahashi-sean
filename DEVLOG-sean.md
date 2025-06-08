@@ -60,3 +60,7 @@ Added text popup of lines cleared and points scored
 ## 2025-06-05: Clear board
 
 Cleared board after game over and return home or play again.
+
+
+
+I believe this document accurately reflects the contributions of my teamate. - Andy
