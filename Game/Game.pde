@@ -87,7 +87,6 @@ void lockPiece() {
   updateBag();
   int prevlines = lines;
   int linescleared = b.updateBoard();
-  prevlines = linescleared;
   
   lines += linescleared;
   score += calculateScore(linescleared);
