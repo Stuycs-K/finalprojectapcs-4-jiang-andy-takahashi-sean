@@ -123,7 +123,7 @@ public class Tetrimino{
     if (orientation == 0) priorities = new PVector[]{new PVector(0,0), new PVector(1,0), new PVector(1,1), new PVector(0,-2), new PVector(1, -2)};
     if (orientation == 1) priorities = new PVector[]{new PVector(0,0), new PVector(1,0), new PVector(1,-1), new PVector(0,2), new PVector(1,2)};
     if (orientation == 2) priorities = new PVector[]{new PVector(0,0), new PVector(-1, 0), new PVector(-1,1), new PVector(0,-2), new PVector(-1,-2)};
-    if (orientation == 3) priorities = new PVector[]{new PVector(0,0), new PVector(1,0), new PVector(1,1), new PVector(0,2), new PVector(1, 2)};
+    if (orientation == 3) priorities = new PVector[]{new PVector(0,0), new PVector(-1,0), new PVector(1,1), new PVector(0,2), new PVector(1, -2)};
     for (int i = 0; i < priorities.length; i++) {
       if (rotateHelper(board, COUNTERCLOCKWISE, (int) priorities[i].x, -(int) priorities[i].y)) {
         return i;
@@ -137,7 +137,7 @@ public class Tetrimino{
     if (orientation == 3) priorities = new PVector[]{new PVector(0,0), new PVector(-1,0), new PVector(-1,-1), new PVector(0,2), new PVector(-1, 2)};
     if (orientation == 0) priorities = new PVector[]{new PVector(0,0), new PVector(-1,0), new PVector(-1,1), new PVector(0,-2), new PVector(-1,-2)};
     if (orientation == 1) priorities = new PVector[]{new PVector(0,0), new PVector(1, 0), new PVector(1,-1), new PVector(0,2), new PVector(1,2)};
-    if (orientation == 2) priorities = new PVector[]{new PVector(0,0), new PVector(-1,0), new PVector(-1,-1), new PVector(0,-2), new PVector(-1,2)};
+    if (orientation == 2) priorities = new PVector[]{new PVector(0,0), new PVector(1,0), new PVector(-1,-1), new PVector(0,-2), new PVector(-1,2)};
     for (int i = 0; i < priorities.length; i++) {
       if (rotateHelper(board, CLOCKWISE, (int) priorities[i].x, -(int) priorities[i].y)) {
         return i;

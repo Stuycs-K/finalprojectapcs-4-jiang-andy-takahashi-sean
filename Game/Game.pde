@@ -8,7 +8,7 @@ final int TPIECE = 4;
 final int ZPIECE = 5;
 final int SPIECE = 6;
 final int BLOCKSIZE = 40;
-final int BOARD_START_Y = 150;
+final int BOARD_START_Y = 50;
 final int BOARD_START_X = 250;
 final int CLOCKWISE = 0;
 final int COUNTERCLOCKWISE = 1;
@@ -24,7 +24,7 @@ int mode = 0;
 ArrayList<Integer> topscores = new ArrayList<>(Arrays.asList(1000, 2000, 3000, 4000, 5000));
 
 int SPAWNX = 410;
-int SPAWNY = 150;
+int SPAWNY = 50;
 
 ArrayList<Tetrimino> bag;
 final List<Float> speed = Arrays.asList(0.016667, 0.021017, 0.026977, 0.035256, 0.04693, 0.06361, 0.0879, 0.1236, 0.1775, 0.2598, 0.388, 0.59, 0.92, 1.46, 2.36);
@@ -36,7 +36,7 @@ Tetrimino current;
 Board b;
 
 int framesSinceInput = 0;
-int framesUntilLock = 100;
+int framesUntilLock = 60;
 
 void dtCannon() {  //hardcodes opening pieces
   bag.add(new Tetrimino(SPAWNX, SPAWNY, JPIECE));
@@ -115,25 +115,25 @@ void displayBag() {
   fill(100);
   strokeWeight(10);
   stroke(200);
-  rect(670,200, 240, 500);
+  rect(670,100, 240, 500);
   
   fill(255);
   textSize(20);
-  text("NEXT", 770, 230);
+  text("NEXT", 770, 130);
   
   fill(0);
   strokeWeight(0);
-  rect(685, 240, 210, 440);
+  rect(685, 140, 210, 440);
   
   if(mode == 1){
     Tetrimino temp = bag.get(1);
-    temp.displayatpos(750, 310);
+    temp.displayatpos(750, 210);
     
     temp = bag.get(2);
-    temp.displayatpos(750, 445);
+    temp.displayatpos(750, 345);
     
     temp = bag.get(3);
-    temp.displayatpos(750, 580);
+    temp.displayatpos(750, 480);
   }
 }
   
@@ -141,23 +141,23 @@ void displayHold() {
   fill(100);
   strokeWeight(10);
   stroke(200);
-  rect(30,200, 200, 195);
+  rect(30,100, 200, 195);
   fill(255);
   textSize(20);
-  text("HOLD", 105, 225);
+  text("HOLD", 105, 125);
   
   fill(0);
   strokeWeight(0);
-  rect(40, 240, 180, 140);
+  rect(40, 140, 180, 140);
   
   if(hold != null){
-    hold.displayatpos(90, 295);
+    hold.displayatpos(90, 195);
   }
 }
  
 void holdPiece() {
   if (hold == null) {
-    hold = new Tetrimino(410, 230, current.piecetype);
+    hold = new Tetrimino(410, 130, current.piecetype);
     bag.remove(0);
     current = bag.get(0);
     canHold = false;
@@ -165,7 +165,7 @@ void holdPiece() {
   else {
     if (canHold) {
       Tetrimino temp = hold;
-      hold = new Tetrimino(410, 230, current.piecetype);
+      hold = new Tetrimino(410, 130, current.piecetype);
       current = temp;
       current = new Tetrimino(SPAWNX, SPAWNY, current.piecetype);
       canHold = false;
@@ -177,37 +177,37 @@ void displayScore() {
   fill(100);
   strokeWeight(10);
   stroke(200);
-  rect(30, 600, 200, 320); 
+  rect(30, 500, 200, 320); 
    
   fill(0);
   strokeWeight(0);
-  rect(50, 645, 160, 50);
+  rect(50, 545, 160, 50);
   
   fill(255);
   textSize(20);
-  text("SCORE", 105, 635);
+  text("SCORE", 105, 535);
   textSize(30);
-  text(score, 105, 675);
+  text(score, 105, 575);
   
   fill(0);
   strokeWeight(0);
-  rect(50, 755, 160, 50);
+  rect(50, 655, 160, 50);
   
   fill(255);
   textSize(20);
-  text("LEVEL", 105, 745);
+  text("LEVEL", 105, 645);
   textSize(30);
-  text(level, 105, 785);
+  text(level, 105, 685);
   
   fill(0);
   strokeWeight(0);
-  rect(50, 860, 160, 50); 
+  rect(50, 760, 160, 50); 
   
   fill(255);
   textSize(20);
-  text("LINES", 105, 850);
+  text("LINES", 105, 750);
   textSize(30);
-  text(lines, 105, 890);
+  text(lines, 105, 790);
 }
 
 int calculateScore(int clear){
@@ -242,16 +242,16 @@ void displayClear(int linescleared){
     fill(255);
     textSize(30);
     if(linescleared == 1){
-      text("SINGLE!", 400, 600);
+      text("SINGLE!", 400, 400);
     }
     else if(linescleared == 2){
-      text("DOUBLE!", 400, 600);
+      text("DOUBLE!", 400, 400);
     }
     else if(linescleared == 3){
-      text("TRIPLE!", 400, 600);
+      text("TRIPLE!", 400, 400);
     }
     else{
-      text("TETRIS!", 400, 600);
+      text("TETRIS!", 400, 400);
     }
    }
 }
@@ -298,51 +298,51 @@ void draw() {
   
   if (mode == 0){
     fill(50);
-    rect(246, 150, 406, 801);
+    rect(246, 50, 406, 801);
     
     fill(0, 50, 240);
     strokeWeight(10);
     stroke(0, 70, 240);
-    rect(330, 185, 245, 90);
-    rect(411, 275, 82, 80);
+    rect(330, 85, 245, 90);
+    rect(411, 175, 82, 80);
     strokeWeight(0);
-    rect(417, 265, 72, 20);
+    rect(417, 165, 72, 20);
     
     textSize(70);
     fill(255, 0, 255);
-    text("T", 340, 250);
+    text("T", 340, 150);
     
     fill(255, 120, 0);
-    text("E", 380, 250);
+    text("E", 380, 150);
     
     fill(255, 255, 0);
-    text("T", 420, 250);
+    text("T", 420, 150);
     
     fill(0, 255, 0);
-    text("R", 460, 250);
+    text("R", 460, 150);
     
     fill(0, 191, 255);
-    text("I", 505, 250);
+    text("I", 505, 150);
     
     fill(200, 0, 200);
-    text("S", 530, 250);
+    text("S", 530, 150);
     
     strokeWeight(2);
     stroke(255);
     fill(0, 255, 0); //green
-    rect(350, 415, 200, 65); //play button
+    rect(350, 315, 200, 65); //play button
     
     fill(255);
     textSize(30);
-    text("PLAY", 420, 455); //text for play button
+    text("PLAY", 420, 355); //text for play button
     
     fill(150);
-    rect(360, 505, 180, 55); //level button
+    rect(360, 405, 180, 55); //level button
     strokeWeight(0);
     
     fill(255);
     textSize(25);
-    text("LEVEL: " + level, 407, 540); //dynamic level change text
+    text("LEVEL: " + level, 407, 440); //dynamic level change text
     
     
     //display scores
@@ -350,15 +350,15 @@ void draw() {
     fill(0);
     strokeWeight(2);
     stroke(255);
-    rect(300, 620, 300, 225);
+    rect(300, 520, 300, 225);
     
     textSize(30);
     fill(255);
-    text("HIGH SCORES", 365, 660);
+    text("HIGH SCORES", 365, 560);
     
     for(int i = 0; i < 5; i++){
       textSize(25);
-      text(topscores.get(4 - i), 520, 710 + i * 30);
+      text(topscores.get(4 - i), 520, 610 + i * 30);
     }
   }
 
@@ -370,16 +370,16 @@ void draw() {
       fill(255);
       textSize(30);
       if(lastClear == 1){
-        text(lastSpin + "Single!", 400, 600);    
+        text(lastSpin + "Single!", 400, 400);    
       }
       else if(lastClear == 2){
-        text(lastSpin + "Double!", 400, 600);
+        text(lastSpin + "Double!", 400, 400);
       }
       else if(lastClear == 3){
-        text(lastSpin + "Triple!", 400, 600);
+        text(lastSpin + "Triple!", 400, 400);
       }
       else{
-        text("TETRIS!", 400, 600);
+        text("TETRIS!", 400, 400);
       }
     }
     framesSinceInput++;
@@ -408,47 +408,47 @@ void draw() {
     fill(50);
     strokeWeight(10);
     stroke(200);
-    rect(200, 200, 550, 500);
+    rect(200, 100, 550, 500);
     
     //high score box
     fill(0);
     strokeWeight(2);
     stroke(255);
-    rect(325, 380, 300, 175);
+    rect(325, 280, 300, 175);
     
     //home button
     fill(100);
     strokeWeight(2);
     stroke(255);
-    rect(250, 600, 140, 50);
+    rect(250, 500, 140, 50);
     
     //play again button
     fill(0, 255, 0);
     strokeWeight(2);
     stroke(255);
-    rect(400, 600, 140, 50);
+    rect(400, 500, 140, 50);
     
     //end button
     fill(255, 0, 0);
     strokeWeight(2);
     stroke(255);
-    rect(550, 600, 140, 50);
+    rect(550, 500, 140, 50);
     
     fill(255);
     textSize(45);
-    text("GAME OVER", 370, 280);
+    text("GAME OVER", 370, 180);
     
     textSize(30);
-    text("HIGH SCORES", 390, 350);
+    text("HIGH SCORES", 390, 250);
     
     textSize(20);
-    text("HOME", 295, 630);
-    text("PLAY AGAIN", 425, 630);
-    text("EXIT", 603, 630);
+    text("HOME", 295, 530);
+    text("PLAY AGAIN", 425, 530);
+    text("EXIT", 603, 530);
     
     for(int i = 0; i < 5; i++){
       textSize(25);
-      text(topscores.get(4 - i), 550, 415 + i * 30);
+      text(topscores.get(4 - i), 550, 315 + i * 30);
     }
     
     
@@ -458,10 +458,10 @@ void draw() {
 
 void mouseClicked(){
   if(mode == 0){
-    if((mouseX < 550 && mouseX > 350) && (mouseY < 480 && mouseY > 415)){
+    if((mouseX < 550 && mouseX > 350) && (mouseY < 380 && mouseY > 315)){
       mode = 1;
     }
-    if((mouseX < 540 && mouseX > 360) && (mouseY < 560 && mouseY > 505)){
+    if((mouseX < 540 && mouseX > 360) && (mouseY < 460 && mouseY > 405)){
       if(level == 10){
         level = 0;
       }
@@ -470,7 +470,7 @@ void mouseClicked(){
   }
   
   if(mode == 2){
-    if(mouseY < 650 && mouseY > 600){
+    if(mouseY < 550 && mouseY > 500){
       if(mouseX < 390 && mouseX > 250){
         mode = 0;
         b = new Board();
@@ -496,7 +496,7 @@ void mouseClicked(){
 }
 
 void setup() {
-  size(950,1000);
+  size(950,900);
   background(255);
   b = new Board();
   bag = new ArrayList<Tetrimino>();
