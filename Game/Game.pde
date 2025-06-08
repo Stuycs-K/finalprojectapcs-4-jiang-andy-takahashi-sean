@@ -17,6 +17,7 @@ int score = 0;
 int level = 1;
 int displayTime = 10;
 int lastClear = 0;
+int prevLines = 0;
 String lastSpin = "";
 int timeSinceLastClear = 0;
 
@@ -85,16 +86,13 @@ void lockPiece() {
   current = bag.get(0);
   frameCount = 0;
   updateBag();
-  int prevlines = lines;
+  prevLines = lines;
   int linescleared = b.updateBoard();
   
   lines += linescleared;
   score += calculateScore(linescleared);
-  if(linescleared != 0 && (prevlines % 10) + linescleared >= 10 && level < 15){
+  if(linescleared != 0 && (prevLines % 10) + linescleared >= 10 && level < 15){
     level++;
-    fill(255);
-    textSize(30);
-    text("LEVEL UP!", 400, 400);
   }
   canHold = true;
   
@@ -366,6 +364,11 @@ void draw() {
     current.display();
     tick();
     if(lastClear > 0 && timeSinceLastClear < 50){
+      if((prevLines % 10) + lastClear >= 10 && level < 15){
+        fill(255);
+        textSize(30);
+        text("LEVEL UP!", 385, 300);
+      }
       timeSinceLastClear++;
       fill(255);
       textSize(30);
