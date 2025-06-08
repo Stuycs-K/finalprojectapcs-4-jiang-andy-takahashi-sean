@@ -42,3 +42,5 @@ Got displaying the names of special spins to work
 
 ### 2025-06-08
 Tweaked delay time (constants) and finished game.
+
+I believe this document accurately reflects the contributions of my teamate. - Sean
