@@ -60,3 +60,7 @@ Added text popup of lines cleared and points scored
 ## 2025-06-05: Clear board
 
 Cleared board after game over and return home or play again.
+
+## 2025-06-06/07: Minor error/description fixes
+
+Fixed speed when spawning, updated PROTOTYPE and README doc info, added level-up popup text
