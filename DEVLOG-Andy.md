@@ -36,3 +36,9 @@ Changed the way the rotation system worked in order to make kicks easier.
 
 ### 2025-06-04
 Finished the full rotation system. Need to implement scoring for special rotations.
+
+### 2025-06-07
+Got displaying the names of special spins to work
+
+### 2025-06-08
+Tweaked delay time (constants) and finished game.

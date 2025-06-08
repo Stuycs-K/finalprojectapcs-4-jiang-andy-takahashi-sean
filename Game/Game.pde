@@ -503,7 +503,7 @@ void setup() {
   background(255);
   b = new Board();
   bag = new ArrayList<Tetrimino>();
-  dtCannon();
+  //dtCannon();
   generateBag();
   current = bag.get(0);
 }
